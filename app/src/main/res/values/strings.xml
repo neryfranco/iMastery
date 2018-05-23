@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">iMastery</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_tasks">Tarefas</string>
+    <string name="title_itens">Itens</string>
+    <string name="title_schedule">Horarios</string>
+    <string name="label_level">Level</string>
+    <string name="label_points">Points</string>
+    <string name="label_exp">Exp</string>
+    <string name="text_nickname">NickName</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="task_title">Titulo da Tarefa</string>
+    <string name="task_description">Descrição da Tarefa</string>
+    <string name="description_label">Descrição:</string>
+    <string name="task_points_label">Pontos:</string>
+    <string name="task_exp_label">Exp:</string>
+    <string name="task_points_value">points_value</string>
+    <string name="task_exp_value">exp_value</string>
+    <string name="task_aula_label">Aula Associada:</string>
+    <string name="task_aula_value">Nenhuma aula associada.</string>
+    <string name="info_title">Informações:</string>
+    <string name="task_teacher_label">Professor:</string>
+    <string name="task_teacher_value">Nome do Professor</string>
+    <string name="btn_enviarTarefa">Enviar Tarefa</string>
+    <string name="schedule_title">Dia : Horário</string>
+    <string name="schedule_description">Estudar</string>
+    <string name="item_title">Nome do Item</string>
+    <string name="item_description">Descrição do Item</string>
+    <string name="item_expiration">Validade:</string>
+    <string name="delete_schedule_title">Deletar Horário</string>
+    <string name="delete_schedule_text">Você tem certeza que quer deletar este horário?</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="horario_new_title">Adicionar novo horário</string>
+    <string name="dia_semana_label">Dia da Semana:</string>
+    <string name="segunda_value">Segunda-Feira</string>
+    <string name="terca_value">Terça-Feira</string>
+    <string name="quarta_value">Quarta-Feira</string>
+    <string name="domingo_value">Domingo</string>
+    <string name="quinta_value">Quinta-Feira</string>
+    <string name="sexta_value">Sexta-Feira</string>
+    <string name="sabado_value">Sabado</string>
+    <string name="hora_value">Horário:</string>
+
+</resources>
