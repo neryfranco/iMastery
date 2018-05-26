@@ -12,14 +12,17 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.HorarioFragment;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
+import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Horario;
 import com.neryfranco.masterygame.model.Item;
 import com.neryfranco.masterygame.model.Tarefa;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.w3c.dom.Text;
 
-public class Aluno extends AppCompatActivity {
+import java.sql.Time;
+import java.util.ArrayList;
+
+public class AlunoActivity extends AppCompatActivity {
 
     private BottomNavigationView bottonNavigation;
     private FrameLayout mainFrame;
@@ -28,7 +31,7 @@ public class Aluno extends AppCompatActivity {
     private ItensFragment itensFragment;
     private HorarioFragment horarioFragment;
 
-    private Aluno aluno;
+    private AlunoActivity aluno;
     private ArrayList<Tarefa> tarefas_aluno;
     private ArrayList<Item> itens_aluno;
     private ArrayList<Horario> horarios_aluno;
@@ -36,8 +39,8 @@ public class Aluno extends AppCompatActivity {
     private TextView value_level;
     private TextView value_points;
     private TextView value_exp;
+    private TextView value_nickname;
 
-    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,27 +53,33 @@ public class Aluno extends AppCompatActivity {
         value_level = (TextView) findViewById(R.id.value_level);
         value_points = (TextView) findViewById(R.id.value_points);
         value_exp = (TextView) findViewById(R.id.value_exp);
-        getAlunoAtributes();
+        value_nickname = (TextView) findViewById(R.id.text_nickname);
 
         tarefasFragment = new TarefasFragment();
         itensFragment = new ItensFragment();
         horarioFragment = new HorarioFragment();
-        setFragment(tarefasFragment);
 
+        Aluno aluno = new Aluno("email@email.com", "123", "Mateus Nery Franco", "neryfranco");
         tarefas_aluno = adicionarTarefas();
+        horarios_aluno = adicionarHorarios();
+        itens_aluno = adicionarItens();
+
+        setAlunoData(aluno);
+        setFragment(tarefasFragment, tarefas_aluno);
 
         bottonNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Bundle bundle = new Bundle();
                 switch (item.getItemId()) {
                     case R.id.navigation_tasks:
-                        setFragment(tarefasFragment);
+                        setFragment(tarefasFragment, tarefas_aluno);
                         return true;
                     case R.id.navigation_itens:
-                        setFragment(itensFragment);
+                        setFragment(itensFragment, itens_aluno);
                         return true;
                     case R.id.navigation_schedule:
-                        setFragment(horarioFragment);
+                        setFragment(horarioFragment, horarios_aluno);
                         return true;
                 }
                 return false;
@@ -78,18 +87,23 @@ public class Aluno extends AppCompatActivity {
         });
     }
 
-    private void getAlunoAtributes() {
-        int level = 2;
-        double exp = 101.30;
-        double points = 450;
+    private void setAlunoData(Aluno aluno) {
+        Integer level = aluno.getLevel();
+        Double exp = aluno.getExp();
+        Double points = 0.0;
+        String nickname = aluno.getNick();
 
         value_level.setText(String.valueOf(level));
         value_points.setText(Double.toString(points));
         value_exp.setText(Double.toString(exp));
+        value_nickname.setText(String.valueOf(nickname));
     }
 
-    private void setFragment(android.support.v4.app.Fragment fragment){
+    private void setFragment(android.support.v4.app.Fragment fragment, ArrayList list){
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("lista", list);
+        fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.mainFrame, fragment);
         fragmentTransaction.commit();
     }
@@ -113,5 +127,38 @@ public class Aluno extends AppCompatActivity {
         tarefas_aluno.add(e);
         return tarefas_aluno;
 
+    }
+
+
+    private ArrayList<Item> adicionarItens() {
+        ArrayList<Item> items = new ArrayList<Item>();
+        Item e = new Item(1,"Item 1", 100.0);
+        e.setDescricao("Descrição do Item...");
+        items.add(e);
+        e = new Item(2,"Item 2", 200.0);
+        e.setDescricao("Descrição do Item...");
+        items.add(e);
+        e = new Item(3,"Item 3", 300.0);
+        e.setDescricao("Descrição do Item...");
+        items.add(e);
+        e = new Item(4,"Item 4", 400.0);
+        e.setDescricao("Descrição do Item...");
+        items.add(e);
+        return items;
+
+    }
+
+    public ArrayList<Horario> adicionarHorarios() {
+        ArrayList<Horario> horarios = new ArrayList<Horario>();
+        Horario e;
+
+        e = new Horario(Time.valueOf("11:00:00"),2);
+        horarios.add(e);
+        e = new Horario(Time.valueOf("11:00:00"),4);
+        horarios.add(e);
+        e = new Horario(Time.valueOf("11:00:00"),6);
+        horarios.add(e);
+
+        return horarios;
     }
 }

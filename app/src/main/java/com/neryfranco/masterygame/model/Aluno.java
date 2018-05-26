@@ -15,6 +15,9 @@ public class Aluno extends Usuario {
 
     public Aluno(String email, String senha, String nome_completo, String nick) {
         super(email, senha, nome_completo, nick);
+        exp = 0.0;
+        gold = 0.0;
+        level = 0;
     }
 
     public Integer getLevel() {

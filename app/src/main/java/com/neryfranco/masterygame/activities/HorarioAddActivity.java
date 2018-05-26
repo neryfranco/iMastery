@@ -14,7 +14,7 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Horario;
 
-public class HorarioNew extends AppCompatActivity {
+public class HorarioAddActivity extends AppCompatActivity {
 
     private Button confirmar;
     private CheckBox segunda;

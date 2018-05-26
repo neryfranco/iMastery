@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class ItensFragment extends Fragment {
 
     private ListView lista;
+    private ArrayList<Item> itens;
 
     public ItensFragment() {
         // Required empty public constructor
@@ -33,28 +34,11 @@ public class ItensFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_itens, container, false);
 
         lista = (ListView) rootView.findViewById(R.id.listItens);
-        ArrayList<Item> items = adicionarTasks();
-        ArrayAdapter adapter = new Itens_Adapter(this.getContext(), items);
+        Bundle bundle = getArguments();
+        itens = (ArrayList<Item>) bundle.getSerializable("lista");
+        ArrayAdapter adapter = new Itens_Adapter(this.getContext(), itens);
         lista.setAdapter(adapter);
 
         return rootView;
-    }
-
-    private ArrayList<Item> adicionarTasks() {
-        ArrayList<Item> items = new ArrayList<Item>();
-        Item e = new Item(1,"Item 1", 100.0);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        e = new Item(2,"Item 2", 200.0);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        e = new Item(3,"Item 3", 300.0);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        e = new Item(4,"Item 4", 400.0);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        return items;
-
     }
 }

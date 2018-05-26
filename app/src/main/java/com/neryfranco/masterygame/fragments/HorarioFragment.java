@@ -12,12 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.activities.HorarioNew;
+import com.neryfranco.masterygame.activities.HorarioAddActivity;
 import com.neryfranco.masterygame.adapter.Horario_Adapter;
 import com.neryfranco.masterygame.model.Horario;
 
-import java.net.HttpRetryException;
-import java.sql.Time;
 import java.util.ArrayList;
 
 
@@ -40,7 +38,8 @@ public class HorarioFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_horario, container, false);
 
         lista = (ListView) rootView.findViewById(R.id.listHorarios);
-        horarios = adicionarHorarios();
+        Bundle bundle = getArguments();
+        horarios = (ArrayList<Horario>) bundle.getSerializable("lista");
         adapter = new Horario_Adapter(this.getContext(), horarios);
         lista.setAdapter(adapter);
         addButton = (FloatingActionButton) rootView.findViewById(R.id.addHorarioButton);
@@ -49,7 +48,7 @@ public class HorarioFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(inflater.getContext(), HorarioNew.class);
+                Intent intent = new Intent(inflater.getContext(), HorarioAddActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 inflater.getContext().startActivity(intent);
             }
@@ -57,20 +56,7 @@ public class HorarioFragment extends Fragment {
         return rootView;
     }
 
-    public ArrayList<Horario> adicionarHorarios() {
-        ArrayList<Horario> horarios = new ArrayList<Horario>();
-        Horario e;
 
-        e = new Horario(Time.valueOf("11:00:00"),2);
-        horarios.add(e);
-        e = new Horario(Time.valueOf("11:00:00"),4);
-        horarios.add(e);
-        e = new Horario(Time.valueOf("11:00:00"),6);
-        horarios.add(e);
-
-        adapter = new Horario_Adapter(this.getContext(), horarios);
-        return horarios;
-    }
 
     public static void deleteHorario(Horario h){
         adapter.remove(h);

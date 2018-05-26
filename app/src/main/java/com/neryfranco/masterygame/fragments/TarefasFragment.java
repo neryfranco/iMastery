@@ -12,6 +12,7 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.adapter.Tarefas_Adapter;
 import com.neryfranco.masterygame.model.Tarefa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -32,32 +33,13 @@ public class TarefasFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_tarefas, container, false);
 
-        lista = (ListView) rootView.findViewById(R.id.listTasks);
-        tarefas = adicionarTarefas();
+        lista = (ListView) rootView.findViewById(R.id.listTarefas);
+        Bundle bundle = getArguments();
+        tarefas = (ArrayList<Tarefa>) bundle.getSerializable("lista");
         ArrayAdapter adapter = new Tarefas_Adapter(this.getContext(), tarefas);
         lista.setAdapter(adapter);
 
         return rootView;
     }
 
-    private ArrayList<Tarefa> adicionarTarefas() {
-        ArrayList<Tarefa> tarefas_aluno = new ArrayList<Tarefa>();
-        Tarefa e = new Tarefa("Tarefa 1",
-                "Descrição da tarefa...");
-        tarefas_aluno.add(e);
-        e = new Tarefa("Tarefa 2",
-                "Descrição da tarefa...");
-        tarefas_aluno.add(e);
-        e = new Tarefa("Tarefa 3",
-                "Descrição da tarefa...");
-        tarefas_aluno.add(e);
-        e = new Tarefa("Tarefa 4",
-                "Descrição da tarefa...");
-        tarefas_aluno.add(e);
-        e = new Tarefa("Tarefa 5",
-                "Descrição da tarefa...");
-        tarefas_aluno.add(e);
-        return tarefas_aluno;
-
-    }
 }
