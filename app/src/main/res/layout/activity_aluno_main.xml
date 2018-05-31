@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.neryfranco.masterygame.activities.AlunoActivity">
-
     <FrameLayout
         android:id="@+id/mainFrame"
         android:layout_width="0dp"
@@ -184,3 +183,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
+

@@ -1,10 +1,17 @@
 package com.neryfranco.masterygame.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -22,10 +29,12 @@ import org.w3c.dom.Text;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class AlunoActivity extends AppCompatActivity {
+public class AlunoActivity extends SidebarAlunoActivity{
 
     private BottomNavigationView bottonNavigation;
     private FrameLayout mainFrame;
+    private DrawerLayout sidebarMenu;
+    private ActionBarDrawerToggle sidebarBtn;
 
     private TarefasFragment tarefasFragment;
     private ItensFragment itensFragment;
@@ -41,14 +50,23 @@ public class AlunoActivity extends AppCompatActivity {
     private TextView value_exp;
     private TextView value_nickname;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aluno_main);
+        LayoutInflater inflater = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.activity_aluno_main, null, false);
+        drawer.addView(contentView, 0);
 
         mainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         bottonNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+
+        //Sidebar Menu
+        //sidebarMenu = (DrawerLayout) findViewById(R.id.bottom_navigation);
+        sidebarBtn = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(sidebarBtn);
+        sidebarBtn.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         value_level = (TextView) findViewById(R.id.value_level);
         value_points = (TextView) findViewById(R.id.value_points);
@@ -59,6 +77,7 @@ public class AlunoActivity extends AppCompatActivity {
         itensFragment = new ItensFragment();
         horarioFragment = new HorarioFragment();
 
+        //Setando os dados do aluno
         Aluno aluno = new Aluno("email@email.com", "123", "Mateus Nery Franco", "neryfranco");
         tarefas_aluno = adicionarTarefas();
         horarios_aluno = adicionarHorarios();
@@ -85,6 +104,14 @@ public class AlunoActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    //Selecionando Item do Sidebar Menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(sidebarBtn.onOptionsItemSelected(item))
+            return true;
+        return super.onOptionsItemSelected(item);
     }
 
     private void setAlunoData(Aluno aluno) {
@@ -161,4 +188,6 @@ public class AlunoActivity extends AppCompatActivity {
 
         return horarios;
     }
+
+
 }
