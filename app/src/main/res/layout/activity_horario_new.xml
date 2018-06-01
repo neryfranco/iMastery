@@ -112,7 +112,7 @@
         app:layout_constraintStart_toStartOf="@+id/quinta_btn"
         app:layout_constraintTop_toBottomOf="@+id/quinta_btn" />
 
-    <DigitalClock
+    <EditText
         android:id="@+id/clock_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

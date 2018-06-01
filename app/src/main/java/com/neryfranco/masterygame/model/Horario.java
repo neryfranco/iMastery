@@ -1,8 +1,9 @@
 package com.neryfranco.masterygame.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 
-public class Horario {
+public class Horario implements Serializable{
 
     private int id;
     private Time horario;

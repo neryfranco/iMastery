@@ -1,6 +1,8 @@
 package com.neryfranco.masterygame.model;
 
-public class Tarefa {
+import java.io.Serializable;
+
+public class Tarefa implements Serializable{
 
     private Integer id;
     private String titulo;
@@ -12,9 +14,16 @@ public class Tarefa {
     private Aula aula;
     private Matricula matricula;
 
-    public Tarefa(String titulo, String descricao){
+    public Tarefa(Integer id, String titulo, String descricao, Integer reputacao, Double exp, Double points, Integer level, Aula aula, Matricula matricula) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
+        this.reputacao = reputacao;
+        this.exp = exp;
+        this.points = points;
+        this.level = level;
+        this.aula = aula;
+        this.matricula = matricula;
     }
 
     public int getId() {
@@ -57,9 +66,7 @@ public class Tarefa {
         this.exp = exp;
     }
 
-    public double getPoints() {
-        return points;
-    }
+    public double getPoints() {return points;}
 
     public void setPoints(double points) {
         this.points = points;

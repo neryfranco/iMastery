@@ -1,23 +1,29 @@
 package com.neryfranco.masterygame.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Nery on 13/05/2018.
  */
 
-public class Aluno extends Usuario {
+public class Aluno extends Usuario implements Serializable{
 
     private Integer level;
     private Double exp;
-    private Double gold;
-    private List<Item> itens;
+    private Double cash;
+    private ArrayList<Item> itens;
+    private Matricula matricula;
+    private ArrayList<Horario> horarios;
 
     public Aluno(String email, String senha, String nome_completo, String nick) {
         super(email, senha, nome_completo, nick);
         exp = 0.0;
-        gold = 0.0;
+        cash = 0.0;
         level = 0;
+        matricula = null;
+        horarios = new ArrayList<>();
     }
 
     public Integer getLevel() {
@@ -36,19 +42,35 @@ public class Aluno extends Usuario {
         this.exp = exp;
     }
 
-    public Double getGold() {
-        return gold;
+    public Double getCash() {
+        return cash;
     }
 
-    public void setGold(Double gold) {
-        this.gold = gold;
+    public void setCash(Double cash) {
+        this.cash = cash;
     }
 
     public List<Item> getItens() {
         return itens;
     }
 
-    public void setItens(List<Item> itens) {
+    public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
+    }
+
+    public Matricula getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
+    }
+
+    public ArrayList<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(ArrayList<Horario> horarios) {
+        this.horarios = horarios;
     }
 }

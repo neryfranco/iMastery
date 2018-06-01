@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TarefasFragment extends Fragment {
+public class TarefasFragment extends Fragment{
 
     private ListView lista;
     private ArrayList<Tarefa> tarefas;
@@ -38,6 +38,7 @@ public class TarefasFragment extends Fragment {
         tarefas = (ArrayList<Tarefa>) bundle.getSerializable("lista");
         ArrayAdapter adapter = new Tarefas_Adapter(this.getContext(), tarefas);
         lista.setAdapter(adapter);
+        getArguments().remove("lista");
 
         return rootView;
     }

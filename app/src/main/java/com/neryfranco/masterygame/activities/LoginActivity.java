@@ -35,6 +35,7 @@ import java.util.List;
 
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.activities.AlunoActivity;
+import com.neryfranco.masterygame.model.Aluno;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -338,8 +339,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent aluno = new Intent(getApplicationContext(), AlunoActivity.class);
-                startActivity(aluno);
+                Aluno aluno = new Aluno("email@email.com", "123", "Mateus Nery Franco", "neryfranco");
+                Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("aluno", aluno);
+                intent.putExtras(bundle);
+                startActivity(intent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

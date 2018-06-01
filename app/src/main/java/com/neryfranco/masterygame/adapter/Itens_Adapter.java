@@ -2,6 +2,7 @@ package com.neryfranco.masterygame.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class Itens_Adapter extends ArrayAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.element_item, parent, false);
@@ -47,6 +48,9 @@ public class Itens_Adapter extends ArrayAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(context, ItensDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", elementos.get(position));
+                intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });

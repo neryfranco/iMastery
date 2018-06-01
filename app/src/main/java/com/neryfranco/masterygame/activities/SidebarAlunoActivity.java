@@ -20,6 +20,7 @@ public class SidebarAlunoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     protected DrawerLayout drawer;
+    private static NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,8 @@ public class SidebarAlunoActivity extends AppCompatActivity
 
         drawer = (DrawerLayout) findViewById(R.id.sidebarMenuAluno);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -75,7 +77,7 @@ public class SidebarAlunoActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.config_menu) {
 
-        } else if (id == R.id.professor_menu) {
+        } else if (id == R.id.matriculas_menu) {
 
         } else if (id == R.id.sidebarMenuAluno) {
 
@@ -84,5 +86,9 @@ public class SidebarAlunoActivity extends AppCompatActivity
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.sidebarMenuAluno);
             drawer.closeDrawer(GravityCompat.START);
             return true;
-        }
+    }
+
+    public static void setItemSelected(int id){
+        navigationView.getMenu().getItem(id).setChecked(true);
+    }
 }

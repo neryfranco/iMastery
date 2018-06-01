@@ -2,13 +2,14 @@ package com.neryfranco.masterygame.model;
 
 import android.media.Image;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Nery on 13/05/2018.
  */
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String email;
     private String senha;

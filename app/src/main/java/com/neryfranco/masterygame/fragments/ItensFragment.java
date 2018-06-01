@@ -38,6 +38,7 @@ public class ItensFragment extends Fragment {
         itens = (ArrayList<Item>) bundle.getSerializable("lista");
         ArrayAdapter adapter = new Itens_Adapter(this.getContext(), itens);
         lista.setAdapter(adapter);
+        getArguments().remove("lista");
 
         return rootView;
     }

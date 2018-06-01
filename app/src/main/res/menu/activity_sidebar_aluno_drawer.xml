@@ -6,12 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/meuPerfil"
+            android:icon="@drawable/person_dark"
             android:title="@string/meuPerfil" />
         <item
-            android:id="@+id/professor_menu"
-            android:title="@string/professor" />
+            android:id="@+id/matriculas_menu"
+            android:icon="@drawable/academy"
+            android:title="@string/matriculas" />
         <item
             android:id="@+id/aulas_menu"
+            android:icon="@drawable/video_dark"
             android:title="@string/aulas" />
         <item
             android:id="@+id/config_menu"

@@ -1,10 +1,12 @@
 package com.neryfranco.masterygame.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Nery on 13/05/2018.
  */
 
-public class Matricula {
+public class Matricula implements Serializable{
 
     private Professor professor;
     private Integer id;
