@@ -45,13 +45,13 @@
     <string name="sexta_value">Sexta-Feira</string>
     <string name="sabado_value">Sabado</string>
     <string name="hora_value">Horário:</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">iMastery</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="prompt_email">Email:</string>
+    <string name="prompt_password">Password:</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="createAccount">Criar conta</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -70,5 +70,12 @@
     <string name="matriculas">Matriculas</string>
     <string name="aulas">Aulas</string>
     <string name="config">Configurações</string>
+    <string name="login_label">Entre com sua conta</string>
+
+    <string name="insira_seus_dados">Insira seus dados</string>
+    <string name="name_label">Nome Completo:</string>
+    <string name="nickname_label">Nickname (Apelido):</string>
+    <string name="confirmPass_label">Confirmar Senha:</string>
+
 
 </resources>

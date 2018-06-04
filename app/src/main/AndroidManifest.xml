@@ -51,9 +51,8 @@
         <activity
             android:name=".activities.SidebarAlunoActivity"
             android:label="@string/title_activity_sidebar_aluno"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.CriarContaActivity"></activity>
     </application>
 
 </manifest>
