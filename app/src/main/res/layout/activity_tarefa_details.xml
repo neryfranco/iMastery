@@ -54,7 +54,6 @@
             android:id="@+id/tarefa_ratingBar"
             android:layout_width="239dp"
             android:layout_height="44dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:isIndicator="true"
             android:numStars="5"

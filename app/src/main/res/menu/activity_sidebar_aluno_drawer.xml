@@ -5,13 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/meuPerfil"
+            android:id="@+id/meuPerfil_menu"
             android:icon="@drawable/person_dark"
             android:title="@string/meuPerfil" />
         <item
-            android:id="@+id/matriculas_menu"
+            android:id="@+id/professor_menu"
             android:icon="@drawable/academy"
-            android:title="@string/matriculas" />
+            android:title="@string/professor" />
         <item
             android:id="@+id/aulas_menu"
             android:icon="@drawable/video_dark"
@@ -20,6 +20,11 @@
             android:id="@+id/config_menu"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/config" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/power"
+            android:title="@string/logout"/>
     </group>
 
 </menu>

@@ -1,6 +1,7 @@
 package com.neryfranco.masterygame.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -34,7 +35,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
     private BottomNavigationView bottonNavigation;
     private FrameLayout mainFrame;
-    private DrawerLayout sidebarMenu;
     private ActionBarDrawerToggle sidebarBtn;
     private Bundle bundle;
 
@@ -42,7 +42,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     private ItensFragment itensFragment;
     private HorarioFragment horarioFragment;
 
-    private Aluno aluno;
     private ArrayList<Tarefa> tarefas_aluno;
     private ArrayList<Item> itens_aluno;
 
@@ -59,9 +58,15 @@ public class AlunoActivity extends SidebarAlunoActivity{
         View contentView = inflater.inflate(R.layout.activity_aluno_main, null, false);
         drawer.addView(contentView, 0);
 
-        bundle = new Bundle();
         mainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         bottonNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+
+        bundle = new Bundle();
+        bundle = getIntent().getExtras();
+        aluno = (Aluno) bundle.getSerializable("aluno");
+        Intent intent = new Intent(this, SidebarAlunoActivity.class);
+        bundle.putSerializable("aluno", aluno);
+        intent.putExtras(bundle);
 
         //Sidebar Menu
         //sidebarMenu = (DrawerLayout) findViewById(R.id.bottom_navigation);
@@ -76,8 +81,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
         value_exp = (TextView) findViewById(R.id.value_exp);
         value_nickname = (TextView) findViewById(R.id.text_nickname);
 
-        bundle = getIntent().getExtras();
-        aluno = (Aluno) bundle.getSerializable("aluno");
         tarefas_aluno = new ArrayList<>();
         itens_aluno = new ArrayList<>();
 
@@ -111,12 +114,32 @@ public class AlunoActivity extends SidebarAlunoActivity{
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SidebarAlunoActivity.setItemSelected(0);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bundle.putSerializable("aluno", aluno);
+    }
+
     //Selecionando Item do Sidebar Menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(sidebarBtn.onOptionsItemSelected(item))
             return true;
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private void setAlunoData(Aluno aluno) {
@@ -175,7 +198,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
     }
 
-
     private ArrayList<Item> adicionarItens() {
         ArrayList<Item> items = new ArrayList<Item>();
         Item e = new Item(1,"Item 1", "Descricao do Item...",100.0, 300.0, 5);
@@ -192,19 +214,5 @@ public class AlunoActivity extends SidebarAlunoActivity{
         items.add(e);
         return items;
 
-    }
-
-    public ArrayList<Horario> adicionarHorarios() {
-        ArrayList<Horario> horarios = new ArrayList<Horario>();
-        Horario e;
-
-        e = new Horario(Time.valueOf("11:00:00"),2);
-        horarios.add(e);
-        e = new Horario(Time.valueOf("11:00:00"),4);
-        horarios.add(e);
-        e = new Horario(Time.valueOf("11:00:00"),6);
-        horarios.add(e);
-
-        return horarios;
     }
 }

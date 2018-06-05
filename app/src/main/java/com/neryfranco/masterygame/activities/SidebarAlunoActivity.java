@@ -1,36 +1,32 @@
 package com.neryfranco.masterygame.activities;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 
 import com.neryfranco.masterygame.R;
+import com.neryfranco.masterygame.model.Aluno;
 
 public class SidebarAlunoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     protected DrawerLayout drawer;
+    protected Aluno aluno;
+    private Bundle bundle;
     private static NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar_aluno);
-        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         drawer = (DrawerLayout) findViewById(R.id.sidebarMenuAluno);
-
-
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -70,17 +66,29 @@ public class SidebarAlunoActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
+        bundle = getIntent().getExtras();
+        aluno = (Aluno) bundle.getSerializable("aluno");
 
-        if (id == R.id.aulas_menu) {
-            // Handle the camera action
+        if (id == R.id.meuPerfil_menu) {
+            Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
+            bundle.putSerializable("aluno", aluno);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
+        } else if (id == R.id.professor_menu) {
+            Intent intent = new Intent(getApplicationContext(), ProfessorActivity.class);
+            bundle.putSerializable("aluno", aluno);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
+        } else if (id == R.id.aulas_menu) {
+
         } else if (id == R.id.config_menu) {
 
-        } else if (id == R.id.matriculas_menu) {
-
-        } else if (id == R.id.sidebarMenuAluno) {
-
+        } else if (id == R.id.logout) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
         }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.sidebarMenuAluno);

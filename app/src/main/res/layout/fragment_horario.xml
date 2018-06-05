@@ -16,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:clickable="true"
         android:src="@drawable/add_white"
-        app:backgroundTint="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorAlunoDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.92"
