@@ -14,7 +14,7 @@
             android:title="@string/professor" />
         <item
             android:id="@+id/aulas_menu"
-            android:icon="@drawable/video_dark"
+            android:icon="@drawable/video_white"
             android:title="@string/aulas" />
         <item
             android:id="@+id/config_menu"

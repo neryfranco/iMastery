@@ -25,7 +25,7 @@ public class CriarContaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_criar_conta);
 
         nome = (EditText) findViewById(R.id.name_value);
-        nick = (EditText) findViewById(R.id.nickname_value);
+        nick = (EditText) findViewById(R.id.value_nickname);
         email = (EditText) findViewById(R.id.email_value);
         pass = (EditText) findViewById(R.id.pass_value);
         confirmPass = (EditText) findViewById(R.id.confirmPass_value);

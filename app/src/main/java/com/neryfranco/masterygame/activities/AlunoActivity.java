@@ -5,11 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,14 +17,9 @@ import com.neryfranco.masterygame.fragments.HorarioFragment;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
 import com.neryfranco.masterygame.model.Aluno;
-import com.neryfranco.masterygame.model.Horario;
 import com.neryfranco.masterygame.model.Item;
 import com.neryfranco.masterygame.model.Tarefa;
 
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class AlunoActivity extends SidebarAlunoActivity{
@@ -99,13 +90,13 @@ public class AlunoActivity extends SidebarAlunoActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()) {
-                    case R.id.navigation_tasks:
+                    case R.id.nav_tarefas:
                         setFragment(tarefasFragment, tarefas_aluno);
                         return true;
-                    case R.id.navigation_itens:
+                    case R.id.nav_itens:
                         setFragment(itensFragment, itens_aluno);
                         return true;
-                    case R.id.navigation_schedule:
+                    case R.id.nav_horarios:
                         setFragment(horarioFragment, aluno);
                         return true;
                 }

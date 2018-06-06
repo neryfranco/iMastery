@@ -36,6 +36,7 @@ import java.util.List;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.activities.AlunoActivity;
 import com.neryfranco.masterygame.model.Aluno;
+import com.neryfranco.masterygame.model.Professor;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -348,10 +349,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Aluno aluno = new Aluno("email@email.com", "123", "Mateus Nery Franco", "neryfranco");
+                Aluno aluno = new Aluno("email@email.com", "123", "Aluno A", "aluno_big_name_example");
+                Professor professor = new Professor("contato@neryfranco.com","123", "Mateus Nery Franco", "neryfranco");
                 Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("aluno", aluno);
+                bundle.putSerializable("professor", professor);
                 intent.putExtras(bundle);
                 startActivity(intent);
             } else {

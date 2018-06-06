@@ -32,7 +32,7 @@
             app:layout_constraintVertical_bias="0.222" />
 
         <TextView
-            android:id="@+id/text_nickname"
+            android:id="@+id/value_nickname"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_marginBottom="16dp"
@@ -41,14 +41,16 @@
             android:layout_marginTop="4dp"
             android:text="@string/text_nickname"
             android:textColor="@color/colorWhite"
+            android:textDirection="ltr"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/account_image"
-            app:layout_constraintStart_toStartOf="@+id/account_image"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/account_image"
-            app:layout_constraintVertical_bias="0.384" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/value_level"
+            android:id="@+id/value_num_alunos_atual"
             android:layout_width="70dp"
             android:layout_height="18dp"
             android:layout_marginBottom="8dp"
@@ -56,7 +58,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:textDirection="rtl"
-            android:text="value_level"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,33 +67,32 @@
             app:layout_constraintVertical_bias="0.01" />
 
         <TextView
-            android:id="@+id/label_level2"
-            android:layout_width="33dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/label_num_alunos_atual"
+            android:layout_width="111dp"
+            android:layout_height="22dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:text="@string/label_level"
+            android:text="@string/num_alunos_atual"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.31"
+            app:layout_constraintHorizontal_bias="0.408"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.019" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/value_exp"
-            android:layout_width="82dp"
-            android:layout_height="21dp"
+            android:layout_width="81dp"
+            android:layout_height="18dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="80dp"
-            android:text="value_exp"
-            android:textDirection="rtl"
             android:textColor="@color/colorWhite"
+            android:textDirection="rtl"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.976"
@@ -112,13 +112,13 @@
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.299"
+            app:layout_constraintHorizontal_bias="0.304"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.025" />
 
         <TextView
-            android:id="@+id/value_points"
+            android:id="@+id/value_num_alunos_total"
             android:layout_width="83dp"
             android:layout_height="22dp"
             android:layout_marginBottom="8dp"
@@ -126,7 +126,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:textDirection="rtl"
-            android:text="value_points"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -136,21 +135,21 @@
             app:layout_constraintVertical_bias="0.41" />
 
         <TextView
-            android:id="@+id/label_points2"
+            android:id="@+id/label_num_alunos_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/label_points"
+            android:text="@string/num_alunos_total"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.315"
+            app:layout_constraintHorizontal_bias="0.389"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.41" />
+            app:layout_constraintVertical_bias="0.401" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -161,14 +160,16 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_prof"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/account_info">
 
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/bottom_navigation_prof"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
@@ -178,7 +179,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:itemIconTint="@color/nav_item_colors"
         app:itemTextColor="@color/nav_item_colors"
-        app:menu="@menu/botton_navigation">
+        app:menu="@menu/botton_navigation_prof">
     </android.support.design.widget.BottomNavigationView>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_alunos"
+        android:icon="@drawable/alunos"
+        android:title="@string/title_alunos" />
+
+    <item
+        android:id="@+id/nav_itens"
+        android:icon="@drawable/itens_icon"
+        android:title="@string/title_itens" />
+
+    <item
+        android:id="@+id/nav_aulas"
+        android:icon="@drawable/video_white"
+        android:title="@string/aulas" />
+
+</menu>

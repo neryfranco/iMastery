@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_tasks"
+        android:id="@+id/nav_tarefas"
         android:icon="@drawable/tasks_icon"
-        android:title="@string/title_tasks" />
+        android:title="@string/title_tarefas" />
 
     <item
-        android:id="@+id/navigation_itens"
+        android:id="@+id/nav_itens"
         android:icon="@drawable/itens_icon"
         android:title="@string/title_itens" />
 
     <item
-        android:id="@+id/navigation_schedule"
+        android:id="@+id/nav_horarios"
         android:icon="@drawable/schedule_icon"
-        android:title="@string/title_schedule" />
+        android:title="@string/title_horarios" />
 
 </menu>
