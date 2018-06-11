@@ -12,14 +12,14 @@ import android.view.MenuItem;
 
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.model.Aluno;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Professor;
 
 public class SidebarAlunoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     protected DrawerLayout drawer;
-    protected Aluno aluno;
-    protected Professor professor;
+    protected Matricula matricula;
     private Bundle bundle;
     private static NavigationView navigationView;
 
@@ -70,20 +70,17 @@ public class SidebarAlunoActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         bundle = getIntent().getExtras();
-        aluno = (Aluno) bundle.getSerializable("aluno");
-        professor = (Professor) bundle.getSerializable("professor");
+        matricula = (Matricula) bundle.getSerializable("matricula");
 
         if (id == R.id.meuPerfil_menu) {
             Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
-            bundle.putSerializable("aluno", aluno);
-            bundle.putSerializable("professor", professor);
+            bundle.putSerializable("matricula", matricula);
             intent.putExtras(bundle);
             startActivity(intent);
 
         } else if (id == R.id.professor_menu) {
             Intent intent = new Intent(getApplicationContext(), ProfessorActivity.class);
-            bundle.putSerializable("aluno", aluno);
-            bundle.putSerializable("professor", professor);
+            bundle.putSerializable("matricula", matricula);
             intent.putExtras(bundle);
             startActivity(intent);
 

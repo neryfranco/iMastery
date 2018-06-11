@@ -36,6 +36,7 @@ import java.util.List;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.activities.AlunoActivity;
 import com.neryfranco.masterygame.model.Aluno;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Professor;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Matricula matricula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -349,14 +351,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Aluno aluno = new Aluno("email@email.com", "123", "Aluno A", "aluno_big_name_example");
-                Professor professor = new Professor("contato@neryfranco.com","123", "Mateus Nery Franco", "neryfranco");
-                Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("aluno", aluno);
-                bundle.putSerializable("professor", professor);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                startAluno();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -369,6 +364,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void startAluno(){
+        Aluno aluno = new Aluno("email@email.com", "123", "Aluno A", "aluno_big_name_example");
+        Professor professor = new Professor("contato@neryfranco.com","123", "Mateus Nery Franco", "neryfranco");
+        matricula = new Matricula(professor, 0, aluno);
+        Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("matricula", matricula);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

@@ -18,6 +18,7 @@ import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Tarefa;
 
 import java.util.ArrayList;
@@ -54,9 +55,9 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
         bundle = new Bundle();
         bundle = getIntent().getExtras();
-        aluno = (Aluno) bundle.getSerializable("aluno");
+        matricula = (Matricula) bundle.getSerializable("matricula");
         Intent intent = new Intent(this, SidebarAlunoActivity.class);
-        bundle.putSerializable("aluno", aluno);
+        bundle.putSerializable("matricula", matricula);
         intent.putExtras(bundle);
 
         //Sidebar Menu
@@ -82,7 +83,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
         //Setando os dados do aluno
         tarefas_aluno = adicionarTarefas();
         itens_aluno = adicionarItens();
-        setAlunoData(aluno);
+        setAlunoData();
         setFragment(tarefasFragment, tarefas_aluno);
 
         bottonNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -97,7 +98,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
                         setFragment(itensFragment, itens_aluno);
                         return true;
                     case R.id.nav_horarios:
-                        setFragment(horarioFragment, aluno);
+                        setFragment(horarioFragment);
                         return true;
                 }
                 return false;
@@ -114,7 +115,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        bundle.putSerializable("aluno", aluno);
+        bundle.putSerializable("matricula", matricula);
     }
 
     //Selecionando Item do Sidebar Menu
@@ -133,11 +134,11 @@ public class AlunoActivity extends SidebarAlunoActivity{
         startActivity(intent);
     }
 
-    private void setAlunoData(Aluno aluno) {
-        Integer level = aluno.getLevel();
-        Double exp = aluno.getExp();
+    private void setAlunoData() {
+        Integer level = matricula.getAluno().getLevel();
+        Double exp = matricula.getAluno().getExp();
         Double points = 0.0;
-        String nickname = aluno.getNick();
+        String nickname = matricula.getAluno().getNick();
 
         value_level.setText(String.valueOf(level));
         value_points.setText(Double.toString(points));
@@ -154,10 +155,10 @@ public class AlunoActivity extends SidebarAlunoActivity{
         fragmentTransaction.commit();
     }
 
-    private void setFragment(android.support.v4.app.Fragment fragment, Aluno aluno){
+    private void setFragment(android.support.v4.app.Fragment fragment){
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("aluno", aluno);
+        bundle.putSerializable("matricula", matricula);
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.mainFrame, fragment);
         fragmentTransaction.commit();

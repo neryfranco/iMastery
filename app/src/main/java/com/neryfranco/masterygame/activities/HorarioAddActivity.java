@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.model.Aluno;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Horario;
 import com.neryfranco.masterygame.model.SetTime;
 
@@ -61,9 +61,9 @@ public class HorarioAddActivity extends AppCompatActivity {
 
                     createHorarios();
                     bundle = getIntent().getExtras();
-                    Aluno aluno = (Aluno) bundle.getSerializable("aluno");
-                    aluno.getHorarios().addAll(horarios);
-                    bundle.putSerializable("aluno", aluno);
+                    Matricula matricula = (Matricula) bundle.getSerializable("matricula");
+                    matricula.getAluno().getHorarios().addAll(horarios);
+                    bundle.putSerializable("matricula", matricula);
                     intent.putExtras(bundle);
                 } catch (ParseException e) {
                     e.printStackTrace();

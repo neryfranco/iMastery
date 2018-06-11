@@ -15,6 +15,7 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Professor;
 
 import java.util.ArrayList;
@@ -45,11 +46,9 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
         bundle = new Bundle();
         bundle = getIntent().getExtras();
-        aluno = (Aluno) bundle.getSerializable("aluno");
-        professor = (Professor) bundle.getSerializable("professor");
+        matricula = (Matricula) bundle.getSerializable("matricula");
         Intent intent = new Intent(this, SidebarAlunoActivity.class);
-        bundle.putSerializable("aluno", aluno);
-        bundle.putSerializable("professor", professor);
+        bundle.putSerializable("matricula", matricula);
         intent.putExtras(bundle);
 
         lista_itens = new ArrayList<>();
@@ -105,10 +104,10 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     }
 
     private void setProfessorData() {
-        Integer num_alunos_atuais = professor.getNum_alunos_atuais();
-        Integer num_alunos_total = professor.getNum_alunos_total();
-        Double exp = professor.getExp();
-        String nickname = professor.getNick();
+        Integer num_alunos_atuais = matricula.getProfessor().getNum_alunos_atuais();
+        Integer num_alunos_total = matricula.getProfessor().getNum_alunos_total();
+        Double exp = matricula.getProfessor().getExp();
+        String nickname = matricula.getProfessor().getNick();
 
         value_num_alunos_atual.setText(String.valueOf(num_alunos_atuais));
         value_num_alunos_total.setText(Double.toString(num_alunos_total));
