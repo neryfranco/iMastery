@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.realm.RealmObject;
-
 /**
  * Created by Nery on 13/05/2018.
  */
@@ -19,8 +17,6 @@ public class Professor extends Usuario implements Serializable{
     private Integer num_alunos_total;
     private Double exp;
     private ArrayList<Item> itens;
-
-    public Professor (){}
 
     public Professor(String email, String senha, String nome_completo, String nick) {
         super(email, senha, nome_completo, nick);

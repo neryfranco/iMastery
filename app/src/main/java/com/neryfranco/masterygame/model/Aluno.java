@@ -4,25 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.RealmModel;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
-
 /**
  * Created by Nery on 13/05/2018.
  */
 
-public class Aluno extends Usuario implements Serializable, RealmModel{
-    private Integer id;
+public class Aluno extends Usuario implements Serializable{
+
     private Integer level;
     private Double exp;
     private Double cash;
     private ArrayList<Item> itens;
     private Matricula matricula;
     private ArrayList<Horario> horarios;
-
-    public Aluno (){}
 
     public Aluno(String email, String senha, String nome_completo, String nick) {
         super(email, senha, nome_completo, nick);

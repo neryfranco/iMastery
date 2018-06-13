@@ -11,8 +11,8 @@ public class ProfessorDB extends SQLiteOpenHelper {
 
     // Table columns
     public static final String _ID = "_id";
-    public static final String NOME = "nome";
-    public static final String NICK = "nick";
+    public static final String TODO_SUBJECT = "subject";
+    public static final String TODO_DESC = "description";
     // Database Information
     static final String DB_NAME = "iMastery.DB";
 
@@ -21,7 +21,7 @@ public class ProfessorDB extends SQLiteOpenHelper {
 
     // Creating table query
     private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NOME + " TEXT NOT NULL, " + NICK + " TEXT);";
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TODO_SUBJECT + " TEXT NOT NULL, " + TODO_DESC + " TEXT);";
 
     public ProfessorDB(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

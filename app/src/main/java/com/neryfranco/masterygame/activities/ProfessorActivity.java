@@ -20,13 +20,10 @@ import com.neryfranco.masterygame.model.Professor;
 
 import java.util.ArrayList;
 
-import io.realm.Realm;
-
 public class ProfessorActivity extends SidebarAlunoActivity {
 
     private ActionBarDrawerToggle sidebarBtn;
     private Bundle bundle;
-    private Realm realm;
 
     private ArrayList<Aluno> lista_alunos;
     private ArrayList<Item> lista_itens;
@@ -53,7 +50,6 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         Intent intent = new Intent(this, SidebarAlunoActivity.class);
         bundle.putSerializable("matricula", matricula);
         intent.putExtras(bundle);
-        realm = Realm.getDefaultInstance();
 
         lista_itens = new ArrayList<>();
         lista_alunos = new ArrayList<>();

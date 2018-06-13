@@ -58,6 +58,7 @@ public class HorarioAddActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 try {
+
                     createHorarios();
                     bundle = getIntent().getExtras();
                     Matricula matricula = (Matricula) bundle.getSerializable("matricula");

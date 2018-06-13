@@ -39,8 +39,6 @@ import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Professor;
 
-import io.realm.Realm;
-
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
