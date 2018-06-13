@@ -5,12 +5,17 @@ import android.media.Image;
 import java.io.Serializable;
 import java.util.Date;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
+
 /**
  * Created by Nery on 13/05/2018.
  */
 
 public class Usuario implements Serializable {
-
+    @PrimaryKey
+    @Required
     private String email;
     private String senha;
     private String nome_completo;
@@ -24,6 +29,8 @@ public class Usuario implements Serializable {
     private String biografia;
     private String link;
     private RedeSocial redeSocial;
+
+    public Usuario(){}
 
     public Usuario(String email, String senha, String nome_completo, String nick) {
         this.email = email;
