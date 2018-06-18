@@ -12,13 +12,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.HorarioFragment;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
-import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
-import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Tarefa;
 
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     private BottomNavigationView bottonNavigation;
     private FrameLayout mainFrame;
     private ActionBarDrawerToggle sidebarBtn;
-    private Bundle bundle;
 
     private TarefasFragment tarefasFragment;
     private ItensFragment itensFragment;
@@ -53,12 +51,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
         mainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         bottonNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
-        bundle = new Bundle();
-        bundle = getIntent().getExtras();
-        matricula = (Matricula) bundle.getSerializable("matricula");
-        Intent intent = new Intent(this, SidebarAlunoActivity.class);
-        bundle.putSerializable("matricula", matricula);
-        intent.putExtras(bundle);
+        aluno = AlunoBundle.getAluno();
 
         //Sidebar Menu
         //sidebarMenu = (DrawerLayout) findViewById(R.id.bottom_navigation);
@@ -115,7 +108,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        bundle.putSerializable("matricula", matricula);
     }
 
     //Selecionando Item do Sidebar Menu
@@ -135,10 +127,10 @@ public class AlunoActivity extends SidebarAlunoActivity{
     }
 
     private void setAlunoData() {
-        Integer level = matricula.getAluno().getLevel();
-        Double exp = matricula.getAluno().getExp();
+        Integer level = aluno.getLevel();
+        Double exp = aluno.getExp();
         Double points = 0.0;
-        String nickname = matricula.getAluno().getNick();
+        String nickname = aluno.getNick();
 
         value_level.setText(String.valueOf(level));
         value_points.setText(Double.toString(points));
@@ -157,9 +149,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
     private void setFragment(android.support.v4.app.Fragment fragment){
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("matricula", matricula);
-        fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.mainFrame, fragment);
         fragmentTransaction.commit();
     }
@@ -207,4 +196,5 @@ public class AlunoActivity extends SidebarAlunoActivity{
         return items;
 
     }
+
 }

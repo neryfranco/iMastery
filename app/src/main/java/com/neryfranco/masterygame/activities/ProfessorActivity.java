@@ -1,7 +1,6 @@
 package com.neryfranco.masterygame.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,19 +10,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
-import com.neryfranco.masterygame.model.Matricula;
-import com.neryfranco.masterygame.model.Professor;
 
 import java.util.ArrayList;
 
 public class ProfessorActivity extends SidebarAlunoActivity {
 
     private ActionBarDrawerToggle sidebarBtn;
-    private Bundle bundle;
 
     private ArrayList<Aluno> lista_alunos;
     private ArrayList<Item> lista_itens;
@@ -43,13 +40,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.activity_professor, null, false);
         drawer.addView(contentView, 1);
-
-        bundle = new Bundle();
-        bundle = getIntent().getExtras();
-        matricula = (Matricula) bundle.getSerializable("matricula");
-        Intent intent = new Intent(this, SidebarAlunoActivity.class);
-        bundle.putSerializable("matricula", matricula);
-        intent.putExtras(bundle);
+        professor = AlunoBundle.getProfessor();
 
         lista_itens = new ArrayList<>();
         lista_alunos = new ArrayList<>();
@@ -104,10 +95,10 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     }
 
     private void setProfessorData() {
-        Integer num_alunos_atuais = matricula.getProfessor().getNum_alunos_atuais();
-        Integer num_alunos_total = matricula.getProfessor().getNum_alunos_total();
-        Double exp = matricula.getProfessor().getExp();
-        String nickname = matricula.getProfessor().getNick();
+        Integer num_alunos_atuais = professor.getNum_alunos_atuais();
+        Integer num_alunos_total = professor.getNum_alunos_total();
+        Double exp = professor.getExp();
+        String nickname = professor.getNick();
 
         value_num_alunos_atual.setText(String.valueOf(num_alunos_atuais));
         value_num_alunos_total.setText(Double.toString(num_alunos_total));
@@ -141,4 +132,6 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         return items;
 
     }
+
 }
+

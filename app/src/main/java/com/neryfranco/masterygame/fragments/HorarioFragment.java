@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.activities.HorarioAddActivity;
 import com.neryfranco.masterygame.adapter.Horario_Adapter;
-import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Horario;
-import com.neryfranco.masterygame.model.Matricula;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,6 @@ public class HorarioFragment extends Fragment {
     private static ArrayAdapter adapter;
     private static ArrayList<Horario> horarios;
     private FloatingActionButton addButton;
-    private Matricula matricula;
     private Bundle bundle;
 
     public HorarioFragment() {
@@ -43,8 +41,7 @@ public class HorarioFragment extends Fragment {
 
         lista = (ListView) rootView.findViewById(R.id.listHorarios);
         bundle = getArguments();
-        matricula = (Matricula) bundle.getSerializable("matricula");
-        horarios = matricula.getAluno().getHorarios();
+        horarios = AlunoBundle.getAluno().getHorarios();
         adapter = new Horario_Adapter(this.getContext(), horarios);
         lista.setAdapter(adapter);
         addButton = (FloatingActionButton) rootView.findViewById(R.id.addHorarioButton);
@@ -55,13 +52,10 @@ public class HorarioFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(inflater.getContext(), HorarioAddActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                bundle.putSerializable("matricula",matricula);
-                intent.putExtras(bundle);
                 inflater.getContext().startActivity(intent);
             }
         });
 
-        getArguments().remove("matricula");
         return rootView;
     }
 

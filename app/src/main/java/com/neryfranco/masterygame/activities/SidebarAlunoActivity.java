@@ -1,6 +1,5 @@
 package com.neryfranco.masterygame.activities;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -19,8 +18,9 @@ public class SidebarAlunoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     protected DrawerLayout drawer;
-    protected Matricula matricula;
-    private Bundle bundle;
+    protected static Matricula matricula;
+    protected static Aluno aluno;
+    protected static Professor professor;
     private static NavigationView navigationView;
 
     @Override
@@ -69,19 +69,13 @@ public class SidebarAlunoActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        bundle = getIntent().getExtras();
-        matricula = (Matricula) bundle.getSerializable("matricula");
 
         if (id == R.id.meuPerfil_menu) {
             Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
-            bundle.putSerializable("matricula", matricula);
-            intent.putExtras(bundle);
             startActivity(intent);
 
         } else if (id == R.id.professor_menu) {
             Intent intent = new Intent(getApplicationContext(), ProfessorActivity.class);
-            bundle.putSerializable("matricula", matricula);
-            intent.putExtras(bundle);
             startActivity(intent);
 
         } else if (id == R.id.aulas_menu) {
@@ -101,4 +95,5 @@ public class SidebarAlunoActivity extends AppCompatActivity
     public static void setItemSelected(int id){
         navigationView.getMenu().getItem(id).setChecked(true);
     }
+
 }

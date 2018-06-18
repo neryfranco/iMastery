@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.model.Aluno;
 
@@ -77,9 +78,8 @@ public class CriarContaActivity extends AppCompatActivity {
         Aluno aluno = new Aluno(sEmail, sPass, sNome, sNick);
 
         Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("aluno", aluno);
-        intent.putExtras(bundle);
+        AlunoBundle.setAluno(aluno);
+        AlunoBundle.setProfessorDefault();
         startActivity(intent);
     }
 }

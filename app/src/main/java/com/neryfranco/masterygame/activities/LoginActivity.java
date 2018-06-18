@@ -33,11 +33,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.activities.AlunoActivity;
-import com.neryfranco.masterygame.model.Aluno;
-import com.neryfranco.masterygame.model.Matricula;
-import com.neryfranco.masterygame.model.Professor;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -68,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private Matricula matricula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -368,13 +364,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void startAluno(){
-        Aluno aluno = new Aluno("email@email.com", "123", "Aluno A", "aluno_big_name_example");
-        Professor professor = new Professor("contato@neryfranco.com","123", "Mateus Nery Franco", "neryfranco");
-        matricula = new Matricula(professor, 0, aluno);
+        AlunoBundle.setDefault();
         Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("matricula", matricula);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

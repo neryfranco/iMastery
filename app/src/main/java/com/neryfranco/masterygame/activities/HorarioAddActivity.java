@@ -10,8 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.model.Matricula;
+import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Horario;
 import com.neryfranco.masterygame.model.SetTime;
 
@@ -33,7 +34,7 @@ public class HorarioAddActivity extends AppCompatActivity {
     private CheckBox domingo;
     private TextView clock;
     private ArrayList<Horario> horarios;
-    private Bundle bundle;
+    private Aluno aluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,8 @@ public class HorarioAddActivity extends AppCompatActivity {
         sabado = (CheckBox) findViewById(R.id.sabado_btn);
         domingo = (CheckBox) findViewById(R.id.domingo_btn);
         clock = (EditText) findViewById(R.id.clock_btn);
-        horarios = new ArrayList<>();
+        aluno = AlunoBundle.getAluno();
+        horarios = aluno.getHorarios();
         new SetTime(clock);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
@@ -58,13 +60,8 @@ public class HorarioAddActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 try {
-
                     createHorarios();
-                    bundle = getIntent().getExtras();
-                    Matricula matricula = (Matricula) bundle.getSerializable("matricula");
-                    matricula.getAluno().getHorarios().addAll(horarios);
-                    bundle.putSerializable("matricula", matricula);
-                    intent.putExtras(bundle);
+                    aluno.setHorarios(horarios);
                 } catch (ParseException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Horário Inválido",
