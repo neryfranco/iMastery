@@ -49,6 +49,17 @@
     <string name="sabado_value">Sabado</string>
     <string name="hora_value">Horário:</string>
     <string name="title_activity_login">iMastery</string>
+    <string name="title_matricula_inexistente">Você não está matriculado</string>
+    <string name="description_matricula_inexistente">Sem matrícula você não usufruirá de todos os recursos deste aplicativo. Deseja fazer sua matrícula?</string>
+    <string name="title_matricula_efetivada">Matrícula Efetivada</string>
+    <string name="description_matricula_efetivada">Sua matrícula foi realizada com sucesso!</string>
+    <string name="title_matricula_indisponivel">Matrícula indisponível</string>
+    <string name="description_matricula_indisponivel">Este professor não possui vagas. Tente novamente em outro momento.</string>
+    <string name="title_matricula_removida">Matrícula Removida</string>
+    <string name="description_matricula_removida">Você se desmatriculou deste professor.</string>
+    <string name="matriculado">Matriculado</string>
+    <string name="desmatricular">Desmatricular</string>
+    <string name="ok">OK</string>
 
     <!-- Strings related to login -->
     <string name="email">Email:</string>
@@ -80,6 +91,7 @@
     <string name="name_label">Nome Completo:</string>
     <string name="nickname_label">Nickname (Apelido):</string>
     <string name="confirmPass_label">Confirmar Senha:</string>
+    <string name="matricular">Matricular</string>
 
 
 </resources>

@@ -15,15 +15,19 @@ public class Professor extends Usuario implements Serializable{
     private Date inicio_carreira;
     private Integer num_alunos_atuais;
     private Integer num_alunos_total;
+    private Integer num_max_alunos;
     private Double exp;
     private ArrayList<Item> itens;
+    private ArrayList<Aluno> alunos;
 
-    public Professor(String email, String senha, String nome_completo, String nick) {
+    public Professor(String email, String senha, String nome_completo, String nick, Integer num_max_alunos) {
         super(email, senha, nome_completo, nick);
         this.num_alunos_atuais = 0;
         this.num_alunos_total = 0;
+        this.num_max_alunos = num_max_alunos;
         this.exp = 0.0;
         this.itens = new ArrayList<>();
+        this.alunos = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -72,5 +76,32 @@ public class Professor extends Usuario implements Serializable{
 
     public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
+    }
+
+    public Integer getNum_max_alunos() {
+        return num_max_alunos;
+    }
+
+    public void setNum_max_alunos(Integer num_max_alunos) {
+        this.num_max_alunos = num_max_alunos;
+    }
+
+    public void addAluno(Aluno aluno){
+        alunos.add(aluno);
+        this.num_alunos_atuais++;
+        this.num_alunos_total++;
+    }
+
+    public void removeAluno(Aluno aluno){
+        alunos.remove(aluno);
+        this.num_alunos_atuais--;
+    }
+
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(ArrayList<Aluno> alunos) {
+        this.alunos = alunos;
     }
 }

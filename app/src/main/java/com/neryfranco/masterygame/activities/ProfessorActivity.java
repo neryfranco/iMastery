@@ -1,6 +1,9 @@
 package com.neryfranco.masterygame.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.neryfranco.masterygame.AlunoBundle;
@@ -15,6 +19,8 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
+import com.neryfranco.masterygame.model.Matricula;
+import com.neryfranco.masterygame.model.Professor;
 
 import java.util.ArrayList;
 
@@ -32,6 +38,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     private TextView value_exp;
     private TextView value_nickname;
     private BottomNavigationView bottomNavigation;
+    private Button solicitarMatriculaBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +47,6 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.activity_professor, null, false);
         drawer.addView(contentView, 1);
-        professor = AlunoBundle.getProfessor();
 
         lista_itens = new ArrayList<>();
         lista_alunos = new ArrayList<>();
@@ -58,9 +64,11 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         value_exp = findViewById(R.id.value_exp);
         value_nickname = findViewById(R.id.value_nickname);
         bottomNavigation = findViewById(R.id.bottom_navigation_prof);
+        solicitarMatriculaBtn = findViewById(R.id.solicitarMatriculaBtn);
 
         lista_itens = adicionarItens();
         setProfessorData();
+        verificarMatricula();
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -78,6 +86,13 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                 return false;
             }
         });
+
+        solicitarMatriculaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                solicitarMatricula();
+            }
+        });
     }
 
     //Selecionando Item do Sidebar Menu
@@ -92,16 +107,19 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     protected void onResume() {
         super.onResume();
         SidebarAlunoActivity.setItemSelected(1);
+        verificarMatricula();
+        setProfessorData();
     }
 
     private void setProfessorData() {
+        Professor professor = AlunoBundle.getProfessor();
         Integer num_alunos_atuais = professor.getNum_alunos_atuais();
         Integer num_alunos_total = professor.getNum_alunos_total();
         Double exp = professor.getExp();
         String nickname = professor.getNick();
 
         value_num_alunos_atual.setText(String.valueOf(num_alunos_atuais));
-        value_num_alunos_total.setText(Double.toString(num_alunos_total));
+        value_num_alunos_total.setText(String.valueOf(num_alunos_total));
         value_exp.setText(Double.toString(exp));
         value_nickname.setText(String.valueOf(nickname));
     }
@@ -131,6 +149,58 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         items.add(e);
         return items;
 
+    }
+
+    private void solicitarMatricula(){
+        Professor professor = AlunoBundle.getProfessor();
+        Matricula matricula = AlunoBundle.getMatricula();
+        Aluno aluno = AlunoBundle.getAluno();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        if(matricula == null && professor.getNum_alunos_atuais() < professor.getNum_max_alunos()) {
+            builder.setTitle(R.string.title_matricula_efetivada);
+            builder.setMessage(R.string.description_matricula_efetivada);
+            matricula = new Matricula(professor, professor.getNum_alunos_atuais(), aluno);
+            AlunoBundle.setMatricula(matricula);
+            AlunoBundle.getProfessor().addAluno(AlunoBundle.getAluno());
+        }
+        else if(matricula != null && matricula.getProfessor().equals(professor)) {
+            builder.setTitle(R.string.title_matricula_removida);
+            builder.setMessage(R.string.description_matricula_removida);
+            AlunoBundle.setMatricula(null);
+            AlunoBundle.getAluno().setMatricula(null);
+            AlunoBundle.getProfessor().removeAluno(AlunoBundle.getAluno());
+        }else{
+            builder.setTitle(R.string.title_matricula_indisponivel);
+            builder.setMessage(R.string.description_matricula_indisponivel);
+        }
+        verificarMatricula();
+        setProfessorData();
+
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void verificarMatricula(){
+        Aluno aluno = AlunoBundle.getAluno();
+        Professor professor = AlunoBundle.getProfessor();
+        if(aluno.getMatricula() != null && aluno.getMatricula().getProfessor().equals(professor)) {
+            solicitarMatriculaBtn.setText(R.string.desmatricular);
+        }
+        else {
+            solicitarMatriculaBtn.setText(R.string.matricular);
+        }
     }
 
 }

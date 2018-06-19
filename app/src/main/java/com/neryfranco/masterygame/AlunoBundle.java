@@ -16,11 +16,12 @@ public class AlunoBundle {
 
     public static void setDefault(){
         aluno = new Aluno("email@email.com", "123", "Aluno A", "aluno_example");
-        professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco");
+        professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco", 10);
+        matricula = null;
     }
 
     public static void setProfessorDefault(){
-        professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco");
+        professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco", 10);
     }
 
     public static Bundle getBundle(){
@@ -37,6 +38,7 @@ public class AlunoBundle {
 
     public static void setMatricula(Matricula matricula) {
         AlunoBundle.matricula = matricula;
+        aluno.setMatricula(matricula);
     }
 
     public static Aluno getAluno() {

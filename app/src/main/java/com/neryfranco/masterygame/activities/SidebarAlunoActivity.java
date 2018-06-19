@@ -18,9 +18,6 @@ public class SidebarAlunoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     protected DrawerLayout drawer;
-    protected static Matricula matricula;
-    protected static Aluno aluno;
-    protected static Professor professor;
     private static NavigationView navigationView;
 
     @Override

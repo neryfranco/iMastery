@@ -1,6 +1,8 @@
 package com.neryfranco.masterygame.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +19,7 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.HorarioFragment;
 import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
+import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
 import com.neryfranco.masterygame.model.Tarefa;
 
@@ -50,8 +53,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
         mainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         bottonNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-
-        aluno = AlunoBundle.getAluno();
 
         //Sidebar Menu
         //sidebarMenu = (DrawerLayout) findViewById(R.id.bottom_navigation);
@@ -103,6 +104,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
     protected void onResume() {
         super.onResume();
         SidebarAlunoActivity.setItemSelected(0);
+        verificarMatricula();
     }
 
     @Override
@@ -127,6 +129,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
     }
 
     private void setAlunoData() {
+        Aluno aluno = AlunoBundle.getAluno();
         Integer level = aluno.getLevel();
         Double exp = aluno.getExp();
         Double points = 0.0;
@@ -195,6 +198,31 @@ public class AlunoActivity extends SidebarAlunoActivity{
         items.add(e);
         return items;
 
+    }
+
+    private void verificarMatricula(){
+        if(AlunoBundle.getAluno().getMatricula() == null){
+            /*
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(true);
+            builder.setTitle(R.string.title_matricula_inexistente);
+            builder.setMessage(R.string.description_matricula_inexistente);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(getApplicationContext(), ProfessorActivity.class);
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            */
+        }
     }
 
 }
