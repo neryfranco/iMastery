@@ -35,6 +35,10 @@ public class AlunoBundle {
         return matricula;
     }
 
+    public static void setMatricula(Matricula m){
+        matricula = m;
+    }
+
     public static void newMatricula(Matricula m) {
         matricula = m;
         aluno.setMatricula(matricula);
