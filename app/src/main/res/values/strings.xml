@@ -57,6 +57,10 @@
     <string name="description_matricula_indisponivel">Este professor não possui vagas. Tente novamente em outro momento.</string>
     <string name="title_matricula_removida">Matrícula Removida</string>
     <string name="description_matricula_removida">Você se desmatriculou deste professor.</string>
+    <string name="title_matricula_confirmation">Confirmar Matrícula</string>
+    <string name="description_matricula_confirmation">Tem certeza que deseja se matricular com este professor?</string>
+    <string name="title_desmatricular_confirmation">Desfazer Matrícula</string>
+    <string name="description_desmatricular_confirmation">Tem certeza que deseja se desmatricular deste professor?</string>
     <string name="matriculado">Matriculado</string>
     <string name="desmatricular">Desmatricular</string>
     <string name="ok">OK</string>

@@ -3,7 +3,6 @@ package com.neryfranco.masterygame.activities;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -152,42 +151,56 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     }
 
     private void solicitarMatricula(){
-        Professor professor = AlunoBundle.getProfessor();
-        Matricula matricula = AlunoBundle.getMatricula();
-        Aluno aluno = AlunoBundle.getAluno();
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final Professor professor = AlunoBundle.getProfessor();
+        final Matricula matricula = AlunoBundle.getMatricula();
+        final Aluno aluno = AlunoBundle.getAluno();
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
-        if(matricula == null && professor.getNum_alunos_atuais() < professor.getNum_max_alunos()) {
-            builder.setTitle(R.string.title_matricula_efetivada);
-            builder.setMessage(R.string.description_matricula_efetivada);
-            matricula = new Matricula(professor, professor.getNum_alunos_atuais(), aluno);
-            AlunoBundle.setMatricula(matricula);
-            AlunoBundle.getProfessor().addAluno(AlunoBundle.getAluno());
+
+        if(AlunoBundle.isMatriculado() && matricula.getProfessor().equals(professor)) {
+            builder.setTitle(R.string.title_desmatricular_confirmation);
+            builder.setMessage(R.string.description_desmatricular_confirmation);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AlunoBundle.removeMatricula();
+                    verificarMatricula();
+                    setProfessorData();
+                }
+            });
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
         }
-        else if(matricula != null && matricula.getProfessor().equals(professor)) {
-            builder.setTitle(R.string.title_matricula_removida);
-            builder.setMessage(R.string.description_matricula_removida);
-            AlunoBundle.setMatricula(null);
-            AlunoBundle.getAluno().setMatricula(null);
-            AlunoBundle.getProfessor().removeAluno(AlunoBundle.getAluno());
+
+
+        else if(!AlunoBundle.isMatriculado() && professor.getNum_alunos_atuais() < professor.getNum_max_alunos()) {
+            builder.setTitle(R.string.title_matricula_confirmation);
+            builder.setMessage(R.string.description_matricula_confirmation);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AlunoBundle.newMatricula(new Matricula(professor, professor.getNum_alunos_atuais(), aluno));
+                    verificarMatricula();
+                    setProfessorData();
+                }
+            });
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
         }else{
             builder.setTitle(R.string.title_matricula_indisponivel);
             builder.setMessage(R.string.description_matricula_indisponivel);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {}});
         }
-        verificarMatricula();
-        setProfessorData();
 
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }

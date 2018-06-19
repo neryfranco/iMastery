@@ -79,7 +79,7 @@ public class CriarContaActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
         AlunoBundle.setAluno(aluno);
-        AlunoBundle.setMatricula(null);
+        AlunoBundle.newMatricula(null);
         AlunoBundle.setProfessorDefault();
         startActivity(intent);
     }

@@ -104,7 +104,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     protected void onResume() {
         super.onResume();
         SidebarAlunoActivity.setItemSelected(0);
-        verificarMatricula();
     }
 
     @Override
@@ -202,7 +201,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
     private void verificarMatricula(){
         if(AlunoBundle.getAluno().getMatricula() == null){
-            /*
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setCancelable(true);
             builder.setTitle(R.string.title_matricula_inexistente);
@@ -221,7 +219,7 @@ public class AlunoActivity extends SidebarAlunoActivity{
             });
             AlertDialog dialog = builder.create();
             dialog.show();
-            */
+
         }
     }
 
