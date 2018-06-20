@@ -1,6 +1,8 @@
 package com.neryfranco.masterygame.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
+import com.neryfranco.masterygame.activities.TarefaAddActivity;
 import com.neryfranco.masterygame.adapter.Tarefas_Adapter;
 import com.neryfranco.masterygame.model.Tarefa;
 
@@ -23,6 +27,7 @@ public class TarefasFragment extends Fragment{
 
     private ListView lista;
     private ArrayList<Tarefa> tarefas;
+    private FloatingActionButton addTarefaBtn;
 
     public TarefasFragment() {
     }
@@ -34,13 +39,25 @@ public class TarefasFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_tarefas, container, false);
 
         lista = (ListView) rootView.findViewById(R.id.listTarefas);
-        Bundle bundle = getArguments();
-        tarefas = (ArrayList<Tarefa>) bundle.getSerializable("lista");
-        ArrayAdapter adapter = new Tarefas_Adapter(this.getContext(), tarefas);
+        addTarefaBtn = (FloatingActionButton) rootView.findViewById(R.id.addTarefaButton);
+        ArrayAdapter adapter = new Tarefas_Adapter(this.getContext(), AlunoBundle.getTarefas());
         lista.setAdapter(adapter);
-        getArguments().remove("lista");
+        verificaMatricula();
+
+        addTarefaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TarefaAddActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
+    }
+
+    private void verificaMatricula(){
+        if(AlunoBundle.getAluno().getMatricula() == null) addTarefaBtn.setVisibility(View.INVISIBLE);
+        else addTarefaBtn.setVisibility(View.VISIBLE);
     }
 
 }

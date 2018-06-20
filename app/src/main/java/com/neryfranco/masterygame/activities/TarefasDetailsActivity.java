@@ -53,5 +53,6 @@ public class TarefasDetailsActivity extends AppCompatActivity{
         points.setText(p.toString());
         exp.setText(e.toString());
         ratingBar.setNumStars(tarefa.getReputacao());
+        professor.setText(tarefa.getMatricula().getProfessor().getNick());
     }
 }

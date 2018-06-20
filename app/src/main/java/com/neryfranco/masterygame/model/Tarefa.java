@@ -10,20 +10,18 @@ public class Tarefa implements Serializable{
     private Integer reputacao;
     private Double exp;
     private Double points;
-    private Integer level;
     private Aula aula;
     private Matricula matricula;
 
-    public Tarefa(Integer id, String titulo, String descricao, Integer reputacao, Double exp, Double points, Integer level, Aula aula, Matricula matricula) {
+    public Tarefa(Integer id, String titulo, String descricao, Double exp, Double points, Aula aula, Matricula matricula) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.reputacao = reputacao;
         this.exp = exp;
         this.points = points;
-        this.level = level;
         this.aula = aula;
         this.matricula = matricula;
+        this.reputacao = 0;
     }
 
     public int getId() {
@@ -72,11 +70,19 @@ public class Tarefa implements Serializable{
         this.points = points;
     }
 
-    public int getLevel() {
-        return level;
+    public Aula getAula() {
+        return aula;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setAula(Aula aula) {
+        this.aula = aula;
+    }
+
+    public Matricula getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
     }
 }

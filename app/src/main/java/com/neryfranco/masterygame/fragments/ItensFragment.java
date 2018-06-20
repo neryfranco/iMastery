@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.adapter.Itens_Adapter;
 import com.neryfranco.masterygame.model.Item;
@@ -34,11 +35,8 @@ public class ItensFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_itens, container, false);
 
         lista = (ListView) rootView.findViewById(R.id.listItens);
-        Bundle bundle = getArguments();
-        itens = (ArrayList<Item>) bundle.getSerializable("lista");
-        ArrayAdapter adapter = new Itens_Adapter(this.getContext(), itens);
+        ArrayAdapter adapter = new Itens_Adapter(this.getContext(), AlunoBundle.getItens());
         lista.setAdapter(adapter);
-        getArguments().remove("lista");
 
         return rootView;
     }

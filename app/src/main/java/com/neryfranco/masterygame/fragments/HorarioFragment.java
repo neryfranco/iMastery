@@ -40,7 +40,6 @@ public class HorarioFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_horario, container, false);
 
         lista = (ListView) rootView.findViewById(R.id.listHorarios);
-        bundle = getArguments();
         horarios = AlunoBundle.getAluno().getHorarios();
         adapter = new Horario_Adapter(this.getContext(), horarios);
         lista.setAdapter(adapter);

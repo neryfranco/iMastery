@@ -56,8 +56,8 @@
         <activity
             android:name=".activities.ProfessorActivity"
             android:label="@string/professor"
-            android:theme="@style/ProfessorTheme">
-        </activity>
+            android:theme="@style/ProfessorTheme"></activity>
+        <activity android:name=".activities.TarefaAddActivity"></activity>
     </application>
 
 </manifest>

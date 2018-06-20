@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TarefaAddActivity">
+
+
+    <TextView
+        android:id="@+id/novaTarefa_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/trykker"
+        android:text="@string/nova_tarefa"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo_tarefa_label"
+        android:layout_width="41dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/titulo"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aluno_label" />
+
+    <EditText
+        android:id="@+id/titulo_value"
+        android:layout_width="246dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/titulo_tarefa_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/titulo_tarefa_label"
+        app:layout_constraintTop_toTopOf="@+id/titulo_tarefa_label"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <TextView
+        android:id="@+id/aluno_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/aluno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/novaTarefa_label" />
+
+    <TextView
+        android:id="@+id/aluno_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="aluno_nickname"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="@+id/aluno_label"
+        app:layout_constraintStart_toStartOf="@+id/titulo_value"
+        app:layout_constraintTop_toTopOf="@+id/aluno_label"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/descricao_value"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="236dp"
+        android:layout_height="123dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/edit_box_background"
+        android:ems="10"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="165"
+        android:maxLines="6"
+        android:scrollHorizontally="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/descricao_label"
+        app:layout_constraintEnd_toEndOf="@+id/titulo_value"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/titulo_value"
+        app:layout_constraintTop_toTopOf="@+id/descricao_label"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <TextView
+        android:id="@+id/descricao_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/descricao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_tarefa_label" />
+
+    <TextView
+        android:id="@+id/exp_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/exp_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descricao_value" />
+
+    <EditText
+        android:id="@+id/exp_value"
+        android:layout_width="72dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="12sp"
+        android:maxLength="4"
+        app:layout_constraintBottom_toBottomOf="@+id/exp_label"
+        app:layout_constraintStart_toEndOf="@+id/exp_label"
+        app:layout_constraintTop_toTopOf="@+id/exp_label"
+        app:layout_constraintVertical_bias="0.466" />
+
+    <TextView
+        android:id="@+id/points_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/points_label"
+        app:layout_constraintBottom_toBottomOf="@+id/exp_label"
+        app:layout_constraintStart_toEndOf="@+id/exp_value"
+        app:layout_constraintTop_toTopOf="@+id/exp_label"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/pontos_value"
+        android:layout_width="72dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLength="4"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/exp_value"
+        app:layout_constraintStart_toEndOf="@+id/points_label"
+        app:layout_constraintTop_toTopOf="@+id/exp_value"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/associarAula_label"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/associar_aula_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_label" />
+
+    <Spinner
+        android:id="@+id/aula_value"
+        android:layout_width="276dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/associarAula_label" />
+
+    <Button
+        android:id="@+id/criarTarefaBtn"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/criar_tarefa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aula_value" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.neryfranco.masterygame.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nery on 13/05/2018.
@@ -15,6 +17,7 @@ public class Matricula implements Serializable{
     private Integer level;
     private Double exp;
     private Double points;
+    private ArrayList<Tarefa> tarefas;
 
     public Matricula(Professor professor, Integer id, Aluno aluno) {
         this.professor = professor;
@@ -24,6 +27,7 @@ public class Matricula implements Serializable{
         level = 0;
         exp = 0.0;
         points = 0.0;
+        tarefas = new ArrayList<>();
     }
 
     public Professor getProfessor() {
@@ -80,5 +84,17 @@ public class Matricula implements Serializable{
 
     public void setPoints(Double points) {
         this.points = points;
+    }
+
+    public ArrayList<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(ArrayList<Tarefa> tarefas) {
+        this.tarefas = tarefas;
+    }
+
+    public void addTarefa(Tarefa tarefa){
+        tarefas.add(tarefa);
     }
 }

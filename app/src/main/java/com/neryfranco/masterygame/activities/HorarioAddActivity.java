@@ -57,17 +57,16 @@ public class HorarioAddActivity extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 try {
                     createHorarios();
                     aluno.setHorarios(horarios);
+                    Intent intent = new Intent(getApplicationContext(),AlunoActivity.class);
+                    startActivity(intent);
                 } catch (ParseException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Horário Inválido",
                             Toast.LENGTH_LONG).show();
                 }
-                startActivity(intent);
             }
         });
     }

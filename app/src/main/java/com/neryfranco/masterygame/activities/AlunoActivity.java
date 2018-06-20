@@ -35,9 +35,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     private ItensFragment itensFragment;
     private HorarioFragment horarioFragment;
 
-    private ArrayList<Tarefa> tarefas_aluno;
-    private ArrayList<Item> itens_aluno;
-
     private TextView value_level;
     private TextView value_points;
     private TextView value_exp;
@@ -67,29 +64,23 @@ public class AlunoActivity extends SidebarAlunoActivity{
         value_exp = (TextView) findViewById(R.id.value_exp);
         value_nickname = (TextView) findViewById(R.id.text_nickname);
 
-        tarefas_aluno = new ArrayList<>();
-        itens_aluno = new ArrayList<>();
-
         tarefasFragment = new TarefasFragment();
         itensFragment = new ItensFragment();
         horarioFragment = new HorarioFragment();
 
         //Setando os dados do aluno
-        tarefas_aluno = adicionarTarefas();
-        itens_aluno = adicionarItens();
         setAlunoData();
-        setFragment(tarefasFragment, tarefas_aluno);
+        setFragment(tarefasFragment);
 
         bottonNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.nav_tarefas:
-                        setFragment(tarefasFragment, tarefas_aluno);
+                        setFragment(tarefasFragment);
                         return true;
                     case R.id.nav_itens:
-                        setFragment(itensFragment, itens_aluno);
+                        setFragment(itensFragment);
                         return true;
                     case R.id.nav_horarios:
                         setFragment(horarioFragment);
@@ -103,6 +94,20 @@ public class AlunoActivity extends SidebarAlunoActivity{
     @Override
     protected void onResume() {
         super.onResume();
+        SidebarAlunoActivity.setItemSelected(0);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setFragment(tarefasFragment);
+        SidebarAlunoActivity.setItemSelected(0);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setFragment(tarefasFragment);
         SidebarAlunoActivity.setItemSelected(0);
     }
 
@@ -140,63 +145,10 @@ public class AlunoActivity extends SidebarAlunoActivity{
         value_nickname.setText(String.valueOf(nickname));
     }
 
-    private void setFragment(android.support.v4.app.Fragment fragment, ArrayList list){
-        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("lista", list);
-        fragment.setArguments(bundle);
-        fragmentTransaction.replace(R.id.mainFrame, fragment);
-        fragmentTransaction.commit();
-    }
-
-    private void setFragment(android.support.v4.app.Fragment fragment){
+    public void setFragment(android.support.v4.app.Fragment fragment){
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.mainFrame, fragment);
         fragmentTransaction.commit();
-    }
-
-    private ArrayList<Tarefa> adicionarTarefas() {
-        ArrayList<Tarefa> tarefas_aluno = new ArrayList<Tarefa>();
-        Tarefa e = new Tarefa(1,"Tarefa 1",
-                "Descrição da tarefa...",
-                1,10.0, 5.0, 1, null, null);
-        tarefas_aluno.add(e);
-        e = new Tarefa(2, "Tarefa 2",
-                "Descrição da tarefa...",
-                1,15.0, 7.5, 1, null, null);
-        tarefas_aluno.add(e);
-        e = new Tarefa(3, "Tarefa 3",
-                "Descrição da tarefa...",
-                1,20.0, 10.0, 1, null, null);
-        tarefas_aluno.add(e);
-        e = new Tarefa(4,"Tarefa 4",
-                "Descrição da tarefa...",
-                1,25.0, 12.0, 1, null, null);
-        tarefas_aluno.add(e);
-        e = new Tarefa(5,"Tarefa 5",
-                "Descrição da tarefa...",
-                1,30.0, 9.0, 1, null, null);
-        tarefas_aluno.add(e);
-        return tarefas_aluno;
-
-    }
-
-    private ArrayList<Item> adicionarItens() {
-        ArrayList<Item> items = new ArrayList<Item>();
-        Item e = new Item(1,"Item 1", "Descricao do Item...",100.0, 300.0, 5);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        e = new Item(2,"Item 2", "Descricao do Item...",200.0, 500.0, 10);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        e = new Item(3,"Item 3", "Descricao do Item...",300.0, 800.0, 7);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        e = new Item(4,"Item 4", "Descricao do Item...",400.0, 1000.0, 30);
-        e.setDescricao("Descrição do Item...");
-        items.add(e);
-        return items;
-
     }
 
     private void verificarMatricula(){

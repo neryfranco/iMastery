@@ -19,8 +19,8 @@
     <string name="task_title">Titulo da Tarefa</string>
     <string name="task_description">Descrição da Tarefa</string>
     <string name="description_label">Descrição:</string>
-    <string name="task_points_label">Pontos:</string>
-    <string name="task_exp_label">Exp:</string>
+    <string name="points_label">Pontos:</string>
+    <string name="exp_label">Exp:</string>
     <string name="task_points_value">points_value</string>
     <string name="task_exp_value">exp_value</string>
     <string name="task_aula_label">Aula Associada:</string>
@@ -97,5 +97,11 @@
     <string name="confirmPass_label">Confirmar Senha:</string>
     <string name="matricular">Matricular</string>
 
+    <string name="nova_tarefa">Nova Tarefa</string>
+    <string name="titulo">Título:</string>
+    <string name="aluno">Aluno:</string>
+    <string name="descricao">Descrição:</string>
+    <string name="associar_aula_label">Associar Aula:</string>
+    <string name="criar_tarefa">Criar Tarefa</string>
 
 </resources>
