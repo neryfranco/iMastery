@@ -25,7 +25,7 @@
             android:layout_height="26dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/trykker"
+            
             android:text="@string/task_title"
             android:textAlignment="textStart"
             android:textColor="@color/colorBlack"
@@ -104,7 +104,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="132dp"
             android:layout_marginTop="4dp"
-            android:fontFamily="@font/trykker"
+            
             android:text="@string/info_title"
             android:textAlignment="textStart"
             android:textColor="@color/colorBlack"

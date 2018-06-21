@@ -14,8 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.neryfranco.masterygame.AlunoBundle;
+import com.neryfranco.masterygame.ProfessorBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.fragments.ItensFragment;
+import com.neryfranco.masterygame.fragments.ProfessorItensFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
 import com.neryfranco.masterygame.model.Matricula;
@@ -27,10 +28,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
     private ActionBarDrawerToggle sidebarBtn;
 
-    private ArrayList<Aluno> lista_alunos;
-    private ArrayList<Item> lista_itens;
-
-    private ItensFragment itensFragment;
+    private ProfessorItensFragment professorItensFragment;
 
     private TextView value_num_alunos_atual;
     private TextView value_num_alunos_total;
@@ -47,8 +45,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         View contentView = inflater.inflate(R.layout.activity_professor, null, false);
         drawer.addView(contentView, 1);
 
-        lista_itens = new ArrayList<>();
-        lista_alunos = new ArrayList<>();
+        ProfessorBundle.setItens(adicionarItens());
 
         //Sidebar Menu
         sidebarBtn = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -56,7 +53,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         sidebarBtn.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        itensFragment = new ItensFragment();
+        professorItensFragment = new ProfessorItensFragment();
 
         value_num_alunos_total = findViewById(R.id.value_num_alunos_total);
         value_num_alunos_atual = findViewById(R.id.value_num_alunos_atual);
@@ -65,7 +62,6 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         bottomNavigation = findViewById(R.id.bottom_navigation_prof);
         solicitarMatriculaBtn = findViewById(R.id.solicitarMatriculaBtn);
 
-        lista_itens = adicionarItens();
         setProfessorData();
         verificarMatricula();
 
@@ -77,7 +73,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                     case R.id.nav_alunos:
                         return true;
                     case R.id.nav_itens:
-                        setFragment(itensFragment, lista_itens);
+                        setFragment(professorItensFragment);
                         return true;
                     case R.id.nav_aulas:
                         return true;
@@ -123,11 +119,8 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         value_nickname.setText(String.valueOf(nickname));
     }
 
-    private void setFragment(android.support.v4.app.Fragment fragment, ArrayList list){
+    private void setFragment(android.support.v4.app.Fragment fragment){
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("lista", list);
-        fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.mainFrame, fragment);
         fragmentTransaction.commit();
     }
@@ -135,22 +128,18 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     private ArrayList<Item> adicionarItens() {
         ArrayList<Item> items = new ArrayList<Item>();
         Item e = new Item("10% de Desconto", "Desconto de 10% na próxima mensalidade.",500.0, null, 10);
-        e.setDescricao("Descrição do Item...");
         items.add(e);
 
         e = new Item("Exercícios Técnicos", "Pacote com 5 exercícios técnicos abordando " +
                 "os assuntos de sua escolha",300.0, 40.0, 30);
-        e.setDescricao("Descrição do Item...");
         items.add(e);
 
         e = new Item("Tutorial Musical - Harmonia", "Uma vídeo aula explicando a harmonia" +
                 " de uma música de seu interesse.",800.0, 50.0, 30);
-        e.setDescricao("Descrição do Item...");
         items.add(e);
 
         e = new Item("Tutorial Musical - Técnica", "Uma vídeo aula ensinando as técnicas" +
                 "contidas em uma música de seu interesse.",900.0, 60.0, 30);
-        e.setDescricao("Descrição do Item...");
         items.add(e);
 
         return items;
