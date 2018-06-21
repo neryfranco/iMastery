@@ -3,6 +3,7 @@ package com.neryfranco.masterygame.model;
 import android.media.Image;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Nery on 13/05/2018.
@@ -17,9 +18,10 @@ public class Item implements Serializable{
     private Double cash;
     private Integer validade;
     private Image imagem;
+    private static final AtomicInteger count = new AtomicInteger(0);
 
-    public Item(Integer id, String titulo, String descricao, Double points, Double cash, Integer validade) {
-        this.id = id;
+    public Item(String titulo, String descricao, Double points, Double cash, Integer validade) {
+        this.id = count.incrementAndGet();
         this.titulo = titulo;
         this.descricao = descricao;
         this.points = points;

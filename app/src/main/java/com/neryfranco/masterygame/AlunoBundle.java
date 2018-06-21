@@ -94,7 +94,16 @@ public class AlunoBundle {
 
     public static void addTarefa(Tarefa tarefa){
         tarefas.add(tarefa);
-        matricula.addTarefa(tarefa);
+        matricula.setTarefas(tarefas);
+    }
+
+    public static void removeTarefa(Tarefa tarefa){
+        for(int i = 0; i < tarefas.size(); i++){
+            if(tarefa.getId() == tarefas.get(i).getId()){
+                tarefas.remove(i);
+                matricula.setTarefas(tarefas);
+            }
+        }
     }
 
     public static ArrayList<Item> getItens() {

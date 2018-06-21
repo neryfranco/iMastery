@@ -12,11 +12,10 @@ import android.widget.ListView;
 
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.activities.TarefaAddActivity;
+import com.neryfranco.masterygame.activities.AddTarefaActivity;
 import com.neryfranco.masterygame.adapter.Tarefas_Adapter;
 import com.neryfranco.masterygame.model.Tarefa;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -47,7 +46,7 @@ public class TarefasFragment extends Fragment{
         addTarefaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), TarefaAddActivity.class);
+                Intent intent = new Intent(getContext(), AddTarefaActivity.class);
                 startActivity(intent);
             }
         });

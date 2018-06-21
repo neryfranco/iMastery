@@ -78,12 +78,21 @@ public class Matricula implements Serializable{
         this.exp = exp;
     }
 
+    public void addExp(Double exp){
+        this.exp += exp;
+        aluno.addExp(exp);
+    }
+
     public Double getPoints() {
         return points;
     }
 
     public void setPoints(Double points) {
         this.points = points;
+    }
+
+    public void addPoints(Double points){
+        this.points += points;
     }
 
     public ArrayList<Tarefa> getTarefas() {
@@ -96,5 +105,10 @@ public class Matricula implements Serializable{
 
     public void addTarefa(Tarefa tarefa){
         tarefas.add(tarefa);
+    }
+
+    public void removeTarefa(Tarefa tarefa){
+        tarefas.remove(tarefa);
+        aluno.addTarefaConcluida(tarefa);
     }
 }

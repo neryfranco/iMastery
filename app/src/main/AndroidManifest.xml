@@ -30,15 +30,15 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activities.TarefasDetailsActivity">
+        <activity android:name=".activities.DetailsTarefasActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ItensDetailsActivity" />
-        <activity android:name=".activities.HorarioAddActivity" />
+        <activity android:name=".activities.DetailsItensActivity" />
+        <activity android:name=".activities.AddHorarioActivity" />
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login">
@@ -57,7 +57,7 @@
             android:name=".activities.ProfessorActivity"
             android:label="@string/professor"
             android:theme="@style/ProfessorTheme"></activity>
-        <activity android:name=".activities.TarefaAddActivity"></activity>
+        <activity android:name=".activities.AddTarefaActivity"></activity>
     </application>
 
 </manifest>

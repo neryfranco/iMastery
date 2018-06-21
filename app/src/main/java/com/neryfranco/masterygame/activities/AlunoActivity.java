@@ -21,6 +21,7 @@ import com.neryfranco.masterygame.fragments.ItensFragment;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Tarefa;
 
 import java.util.ArrayList;
@@ -134,10 +135,14 @@ public class AlunoActivity extends SidebarAlunoActivity{
 
     private void setAlunoData() {
         Aluno aluno = AlunoBundle.getAluno();
-        Integer level = aluno.getLevel();
-        Double exp = aluno.getExp();
+        Matricula matricula = AlunoBundle.getMatricula();
+        Double exp = 0.0;
         Double points = 0.0;
+
+        Integer level = aluno.getLevel();
         String nickname = aluno.getNick();
+        exp = aluno.getExp();
+        if(matricula != null) points = matricula.getPoints();
 
         value_level.setText(String.valueOf(level));
         value_points.setText(Double.toString(points));

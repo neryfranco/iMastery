@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.activities.HorarioAddActivity;
+import com.neryfranco.masterygame.activities.AddHorarioActivity;
 import com.neryfranco.masterygame.adapter.Horario_Adapter;
 import com.neryfranco.masterygame.model.Horario;
 
@@ -49,7 +49,7 @@ public class HorarioFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(inflater.getContext(), HorarioAddActivity.class);
+                Intent intent = new Intent(inflater.getContext(), AddHorarioActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 inflater.getContext().startActivity(intent);
             }

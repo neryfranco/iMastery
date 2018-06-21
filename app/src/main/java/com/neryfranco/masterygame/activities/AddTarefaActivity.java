@@ -14,7 +14,7 @@ import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.TarefasFragment;
 import com.neryfranco.masterygame.model.Tarefa;
 
-public class TarefaAddActivity extends AppCompatActivity {
+public class AddTarefaActivity extends AppCompatActivity {
 
     private TextView nickname;
     private EditText titulo;
@@ -24,10 +24,10 @@ public class TarefaAddActivity extends AppCompatActivity {
     private Spinner aula;
     private Button criarTarefaBtn;
 
-    String sTitulo;
-    String sDescricao;
-    Double dExp;
-    Double dPoints;
+    private String sTitulo;
+    private String sDescricao;
+    private Double dExp;
+    private Double dPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class TarefaAddActivity extends AppCompatActivity {
             dExp = Double.parseDouble(exp.getText().toString());
             dPoints = Double.parseDouble(points.getText().toString());
 
-            Tarefa tarefa = new Tarefa(1, sTitulo, sDescricao, dExp, dPoints, null, AlunoBundle.getMatricula());
+            Tarefa tarefa = new Tarefa(sTitulo, sDescricao, dExp, dPoints, null, AlunoBundle.getMatricula());
             AlunoBundle.addTarefa(tarefa);
             return true;
         }

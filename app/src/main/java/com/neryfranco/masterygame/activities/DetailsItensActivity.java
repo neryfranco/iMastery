@@ -1,5 +1,6 @@
 package com.neryfranco.masterygame.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -7,7 +8,7 @@ import android.widget.TextView;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.model.Item;
 
-public class ItensDetailsActivity extends AppCompatActivity {
+public class DetailsItensActivity extends AppCompatActivity {
 
     private TextView title;
     private TextView description;
@@ -34,13 +35,17 @@ public class ItensDetailsActivity extends AppCompatActivity {
     }
 
     public void setInfo(Item item){
-        Double p = item.getPoints();
-        Double e = item.getCash();
 
         title.setText(item.getTitulo());
         description.setText(item.getDescricao());
-        points.setText(p.toString());
-        cash.setText(e.toString());
-        validade.setText(item.getValidade().toString() + " dias");
+
+        if(item.getValidade() == null) validade.setText("Não se aplica");
+        else validade.setText(item.getValidade().toString() + " dias");
+
+        if(item.getPoints() != null) points.setText("Não se aplica");
+        else points.setText(item.getPoints().toString());
+
+        if(item.getCash() != null) cash.setText("Não se aplica");
+        else cash.setText(item.getCash().toString());
     }
 }

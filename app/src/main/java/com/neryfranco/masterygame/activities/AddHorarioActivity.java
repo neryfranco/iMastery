@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class HorarioAddActivity extends AppCompatActivity {
+public class AddHorarioActivity extends AppCompatActivity {
 
     private Button confirmar;
     private CheckBox segunda;

@@ -3,15 +3,15 @@ package com.neryfranco.masterygame.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.activities.TarefasDetailsActivity;
+import com.neryfranco.masterygame.activities.DetailsTarefasActivity;
 import com.neryfranco.masterygame.model.Tarefa;
 
 import java.util.ArrayList;
@@ -37,11 +37,11 @@ public class Tarefas_Adapter extends ArrayAdapter<Tarefa> {
         titulo.setText(elementos.get(position).getTitulo());
         descricao.setText(elementos.get(position).getDescricao());
 
-        ImageView details = (ImageView) rowView.findViewById(R.id.arrow_taskDetails);
+        ConstraintLayout details = (ConstraintLayout) rowView.findViewById(R.id.tarefaDetailsBtn);
         details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, TarefasDetailsActivity.class);
+                Intent intent = new Intent(context, DetailsTarefasActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("tarefa", elementos.get(position));

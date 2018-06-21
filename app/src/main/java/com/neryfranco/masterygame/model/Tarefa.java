@@ -1,6 +1,7 @@
 package com.neryfranco.masterygame.model;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Tarefa implements Serializable{
 
@@ -12,9 +13,10 @@ public class Tarefa implements Serializable{
     private Double points;
     private Aula aula;
     private Matricula matricula;
+    private static final AtomicInteger count = new AtomicInteger(0);
 
-    public Tarefa(Integer id, String titulo, String descricao, Double exp, Double points, Aula aula, Matricula matricula) {
-        this.id = id;
+    public Tarefa(String titulo, String descricao, Double exp, Double points, Aula aula, Matricula matricula) {
+        this.id = count.incrementAndGet();
         this.titulo = titulo;
         this.descricao = descricao;
         this.exp = exp;
@@ -56,7 +58,7 @@ public class Tarefa implements Serializable{
         this.reputacao = reputacao;
     }
 
-    public double getExp() {
+    public Double getExp() {
         return exp;
     }
 

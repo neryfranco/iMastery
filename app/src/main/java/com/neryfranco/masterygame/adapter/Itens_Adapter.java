@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.activities.ItensDetailsActivity;
+import com.neryfranco.masterygame.activities.DetailsItensActivity;
 import com.neryfranco.masterygame.model.Item;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class Itens_Adapter extends ArrayAdapter {
         details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ItensDetailsActivity.class);
+                Intent intent = new Intent(context, DetailsItensActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", elementos.get(position));

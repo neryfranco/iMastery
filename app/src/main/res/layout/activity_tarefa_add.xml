@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.TarefaAddActivity">
+    tools:context=".activities.AddTarefaActivity">
 
 
     <TextView
@@ -36,10 +36,11 @@
 
     <EditText
         android:id="@+id/titulo_value"
-        android:layout_width="246dp"
-        android:layout_height="38dp"
+        android:layout_width="222dp"
+        android:layout_height="34dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:background="@drawable/edit_box_background"
         android:ems="14"
         android:inputType="textPersonName"
         android:textAlignment="textStart"
@@ -78,8 +79,8 @@
     <EditText
         android:id="@+id/descricao_value"
         style="@style/Widget.AppCompat.EditText"
-        android:layout_width="236dp"
-        android:layout_height="123dp"
+        android:layout_width="222dp"
+        android:layout_height="122dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/edit_box_background"
@@ -92,10 +93,9 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/descricao_label"
         app:layout_constraintEnd_toEndOf="@+id/titulo_value"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/titulo_value"
         app:layout_constraintTop_toTopOf="@+id/descricao_label"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.504" />
 
     <TextView
         android:id="@+id/descricao_label"
@@ -126,6 +126,7 @@
         android:inputType="numberDecimal"
         android:textSize="12sp"
         android:maxLength="4"
+        android:background="@drawable/edit_box_background"
         app:layout_constraintBottom_toBottomOf="@+id/exp_label"
         app:layout_constraintStart_toEndOf="@+id/exp_label"
         app:layout_constraintTop_toTopOf="@+id/exp_label"
@@ -150,6 +151,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="24dp"
         android:ems="10"
+        android:background="@drawable/edit_box_background"
         android:inputType="numberDecimal"
         android:maxLength="4"
         android:textSize="12sp"

@@ -134,18 +134,25 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
     private ArrayList<Item> adicionarItens() {
         ArrayList<Item> items = new ArrayList<Item>();
-        Item e = new Item(1,"Item 1", "Descricao do Item...",100.0, 300.0, 5);
+        Item e = new Item("10% de Desconto", "Desconto de 10% na próxima mensalidade.",500.0, null, 10);
         e.setDescricao("Descrição do Item...");
         items.add(e);
-        e = new Item(2,"Item 2", "Descricao do Item...",200.0, 500.0, 10);
+
+        e = new Item("Exercícios Técnicos", "Pacote com 5 exercícios técnicos abordando " +
+                "os assuntos de sua escolha",300.0, 40.0, 30);
         e.setDescricao("Descrição do Item...");
         items.add(e);
-        e = new Item(3,"Item 3", "Descricao do Item...",300.0, 800.0, 7);
+
+        e = new Item("Tutorial Musical - Harmonia", "Uma vídeo aula explicando a harmonia" +
+                " de uma música de seu interesse.",800.0, 50.0, 30);
         e.setDescricao("Descrição do Item...");
         items.add(e);
-        e = new Item(4,"Item 4", "Descricao do Item...",400.0, 1000.0, 30);
+
+        e = new Item("Tutorial Musical - Técnica", "Uma vídeo aula ensinando as técnicas" +
+                "contidas em uma música de seu interesse.",900.0, 60.0, 30);
         e.setDescricao("Descrição do Item...");
         items.add(e);
+
         return items;
 
     }

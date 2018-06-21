@@ -9,13 +9,13 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="185dp"
+        android:layout_width="371dp"
+        android:layout_height="152dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,8 +36,8 @@
 
         <TextView
             android:id="@+id/tarefa_description"
-            android:layout_width="352dp"
-            android:layout_height="120dp"
+            android:layout_width="350dp"
+            android:layout_height="90dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -84,16 +84,18 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="296dp"
+        android:layout_width="364dp"
+        android:layout_height="327dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.096">
 
         <TextView
             android:id="@+id/moreInfo"
@@ -114,27 +116,29 @@
 
         <TextView
             android:id="@+id/task_exp_value"
-            android:layout_width="64dp"
-            android:layout_height="23dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/task_exp_value"
+            android:text="0"
             android:textAlignment="viewStart"
+            android:textDirection="rtl"
             app:layout_constraintBottom_toBottomOf="@+id/label_exp"
-            app:layout_constraintStart_toStartOf="@+id/task_points_value"
+            app:layout_constraintEnd_toEndOf="@+id/task_points_value"
             app:layout_constraintTop_toTopOf="@+id/label_exp"
-            app:layout_constraintVertical_bias="0.727" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/task_points_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
-            android:text="@string/task_points_value"
+            android:text="0"
             android:textAlignment="viewStart"
+            android:textDirection="rtl"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/moreInfo"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             app:layout_constraintVertical_bias="1.0" />
 
@@ -142,12 +146,9 @@
             android:id="@+id/imageView"
             android:layout_width="29dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.383"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/moreInfo"
             app:layout_constraintTop_toBottomOf="@+id/moreInfo"
             app:srcCompat="@drawable/points" />
 
@@ -225,15 +226,15 @@
             app:layout_constraintTop_toBottomOf="@+id/label_teacher" />
 
         <Button
-            android:id="@+id/button"
-            style="@android:style/Widget.DeviceDefault.Light.Button"
+            android:id="@+id/concluirTarefaBtn"
+            style="@android:style/Widget.DeviceDefault.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:text="@string/btn_enviarTarefa"
+            android:text="@string/btn_concluirTarefa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"

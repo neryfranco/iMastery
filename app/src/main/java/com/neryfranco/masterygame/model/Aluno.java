@@ -16,6 +16,7 @@ public class Aluno extends Usuario implements Serializable{
     private ArrayList<Item> itens;
     private Matricula matricula;
     private ArrayList<Horario> horarios;
+    private ArrayList<Tarefa> tarefasConcluidas;
 
     public Aluno(String email, String senha, String nome_completo, String nick) {
         super(email, senha, nome_completo, nick);
@@ -24,6 +25,7 @@ public class Aluno extends Usuario implements Serializable{
         level = 0;
         matricula = null;
         horarios = new ArrayList<>();
+        tarefasConcluidas = new ArrayList<>();
     }
 
     public Integer getLevel() {
@@ -40,6 +42,10 @@ public class Aluno extends Usuario implements Serializable{
 
     public void setExp(Double exp) {
         this.exp = exp;
+    }
+
+    public void addExp(Double exp){
+        this.exp += exp;
     }
 
     public Double getCash() {
@@ -72,5 +78,17 @@ public class Aluno extends Usuario implements Serializable{
 
     public void setHorarios(ArrayList<Horario> horarios) {
         this.horarios = horarios;
+    }
+
+    public ArrayList<Tarefa> getTarefasConcluidas() {
+        return tarefasConcluidas;
+    }
+
+    public void setTarefasConcluidas(ArrayList<Tarefa> tarefasConcluidas) {
+        this.tarefasConcluidas = tarefasConcluidas;
+    }
+
+    public void addTarefaConcluida(Tarefa tarefa){
+        tarefasConcluidas.add(tarefa);
     }
 }

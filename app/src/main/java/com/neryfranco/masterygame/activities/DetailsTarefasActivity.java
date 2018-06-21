@@ -1,11 +1,16 @@
 package com.neryfranco.masterygame.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
+import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Tarefa;
 
 import org.w3c.dom.Text;
@@ -14,7 +19,7 @@ import java.io.Serializable;
 import java.nio.DoubleBuffer;
 import java.util.List;
 
-public class TarefasDetailsActivity extends AppCompatActivity{
+public class DetailsTarefasActivity extends AppCompatActivity{
 
     private TextView title;
     private TextView description;
@@ -23,6 +28,8 @@ public class TarefasDetailsActivity extends AppCompatActivity{
     private TextView aula;
     private TextView professor;
     private RatingBar ratingBar;
+    private Button enviarTarefaBtn;
+    private Tarefa tarefa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,7 @@ public class TarefasDetailsActivity extends AppCompatActivity{
         setContentView(R.layout.activity_tarefa_details);
 
         Bundle bundle = getIntent().getExtras();
-        Tarefa tarefa = (Tarefa) bundle.getSerializable("tarefa");
+        tarefa = (Tarefa) bundle.getSerializable("tarefa");
         getIntent().getExtras().remove("lista");
 
         title = (TextView) findViewById(R.id.tarefa_title);
@@ -40,11 +47,20 @@ public class TarefasDetailsActivity extends AppCompatActivity{
         aula = (TextView) findViewById(R.id.value_aulaAssociada);
         professor = (TextView) findViewById(R.id.value_professorTarefa);
         ratingBar = (RatingBar) findViewById(R.id.tarefa_ratingBar);
+        enviarTarefaBtn = (Button) findViewById(R.id.concluirTarefaBtn);
+        setInfo();
 
-        setInfo(tarefa);
+        enviarTarefaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finalizarTarefa();
+                Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    public void setInfo(Tarefa tarefa){
+    private void setInfo(){
         Double p = tarefa.getPoints();
         Double e = tarefa.getExp();
 
@@ -54,5 +70,14 @@ public class TarefasDetailsActivity extends AppCompatActivity{
         exp.setText(e.toString());
         ratingBar.setNumStars(tarefa.getReputacao());
         professor.setText(tarefa.getMatricula().getProfessor().getNick());
+    }
+
+    private void finalizarTarefa(){
+        Double p = tarefa.getPoints();
+        Double e = tarefa.getExp();
+
+        AlunoBundle.getMatricula().addPoints(p);
+        AlunoBundle.getMatricula().addExp(e);
+        AlunoBundle.removeTarefa(tarefa);
     }
 }

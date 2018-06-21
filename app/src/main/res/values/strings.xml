@@ -14,7 +14,6 @@
     <string name="num_alunos_atual">Nº Alunos atuais</string>
     <string name="num_alunos_total">Total de Alunos</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="task_title">Titulo da Tarefa</string>
     <string name="task_description">Descrição da Tarefa</string>
@@ -28,7 +27,8 @@
     <string name="info_title">Informações:</string>
     <string name="task_teacher_label">Professor:</string>
     <string name="task_teacher_value">Nome do Professor</string>
-    <string name="btn_enviarTarefa">Enviar Tarefa</string>
+    <string name="btn_concluirTarefa">Concluir Tarefa</string>
+
     <string name="schedule_title">Dia : Horário</string>
     <string name="schedule_description">Estudar</string>
     <string name="item_title">Nome do Item</string>
@@ -60,7 +60,7 @@
     <string name="title_matricula_confirmation">Confirmar Matrícula</string>
     <string name="description_matricula_confirmation">Tem certeza que deseja se matricular com este professor?</string>
     <string name="title_desmatricular_confirmation">Desfazer Matrícula</string>
-    <string name="description_desmatricular_confirmation">Tem certeza que deseja se desmatricular deste professor?</string>
+    <string name="description_desmatricular_confirmation">Você perderá todos os pontos que possui nesta matrícula! Tem certeza que deseja se desmatricular deste professor?</string>
     <string name="matriculado">Matriculado</string>
     <string name="desmatricular">Desmatricular</string>
     <string name="ok">OK</string>
