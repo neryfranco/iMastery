@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Matricula;

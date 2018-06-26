@@ -55,6 +55,11 @@ public class AddTarefaActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private boolean criarTarefa(){
         if(validate()) {
             sTitulo = titulo.getText().toString();

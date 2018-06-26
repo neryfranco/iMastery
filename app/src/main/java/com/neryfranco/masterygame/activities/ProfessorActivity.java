@@ -47,8 +47,6 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         View contentView = inflater.inflate(R.layout.activity_professor, null, false);
         drawer.addView(contentView, 1);
 
-        ProfessorBundle.setItens(adicionarItens());
-
         //Sidebar Menu
         sidebarBtn = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(sidebarBtn);
@@ -128,27 +126,6 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.mainFrame, fragment);
         fragmentTransaction.commit();
-    }
-
-    private ArrayList<Item> adicionarItens() {
-        ArrayList<Item> items = new ArrayList<Item>();
-        Item e = new Item("10% de Desconto", "Desconto de 10% na próxima mensalidade.",500.0, null, 10);
-        items.add(e);
-
-        e = new Item("Exercícios Técnicos", "Pacote com 5 exercícios técnicos abordando " +
-                "os assuntos de sua escolha",300.0, 40.0, 30);
-        items.add(e);
-
-        e = new Item("Tutorial Musical - Harmonia", "Uma vídeo aula explicando a harmonia" +
-                " de uma música de seu interesse.",800.0, 50.0, 30);
-        items.add(e);
-
-        e = new Item("Tutorial Musical - Técnica", "Uma vídeo aula ensinando as técnicas" +
-                "contidas em uma música de seu interesse.",900.0, 60.0, 30);
-        items.add(e);
-
-        return items;
-
     }
 
     private void solicitarMatricula(){

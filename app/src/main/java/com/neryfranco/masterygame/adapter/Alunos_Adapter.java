@@ -3,6 +3,7 @@ package com.neryfranco.masterygame.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class Alunos_Adapter extends ArrayAdapter {
         nickname.setText(elementos.get(position).getNick());
         exp.setText(elementos.get(position).getExp().toString());
 
-        ImageView details = (ImageView) rowView.findViewById(R.id.arrow_alunoDetails);
+        ConstraintLayout details = (ConstraintLayout) rowView.findViewById(R.id.element_aluno);
         details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

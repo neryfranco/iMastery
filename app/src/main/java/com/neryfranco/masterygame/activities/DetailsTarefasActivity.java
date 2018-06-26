@@ -61,6 +61,11 @@ public class DetailsTarefasActivity extends AppCompatActivity{
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private void setInfo(){
         Double p = tarefa.getPoints();
         Double e = tarefa.getExp();

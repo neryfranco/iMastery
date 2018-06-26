@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/element_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -48,8 +49,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/item_description"
             android:maxLength="30"
+            android:text="@string/item_description"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/arrow_itensDetails"

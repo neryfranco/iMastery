@@ -22,6 +22,7 @@ public class DetailsItensActivity extends AppCompatActivity {
     private TextView points;
     private TextView cash;
     private TextView validade;
+    private TextView cod;
     private Item item;
     private Button comprarBtn;
 
@@ -32,7 +33,7 @@ public class DetailsItensActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         item = (Item) bundle.getSerializable("item");
-        getIntent().getExtras().remove("lista");
+        getIntent().getExtras().remove("item");
 
         title = (TextView) findViewById(R.id.item_title);
         description = (TextView) findViewById(R.id.item_description);
@@ -40,10 +41,13 @@ public class DetailsItensActivity extends AppCompatActivity {
         cash = (TextView) findViewById(R.id.item_cash);
         validade = (TextView) findViewById(R.id.item_validade);
         comprarBtn = (Button) findViewById(R.id.comprarItem_btn);
+        cod = findViewById(R.id.cod_value);
 
         if(AlunoBundle.containItem(item)){
             comprarBtn.setVisibility(View.INVISIBLE);
             comprarBtn.setClickable(false);
+            Toast.makeText(getApplicationContext(), AlunoBundle.getItens().size(),
+                    Toast.LENGTH_LONG).show();
         }
         comprarBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -91,10 +95,16 @@ public class DetailsItensActivity extends AppCompatActivity {
         setInfo();
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     public void setInfo(){
 
         title.setText(item.getTitulo());
         description.setText(item.getDescricao());
+        cod.setText(item.getId().toString());
 
         if(item.getValidade() == null) validade.setText("Não se aplica");
         else validade.setText(item.getValidade().toString() + " dias");

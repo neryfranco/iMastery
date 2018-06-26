@@ -57,7 +57,7 @@ public class Aluno extends Usuario implements Serializable{
         this.cash = cash;
     }
 
-    public List<Item> getItens() {
+    public ArrayList<Item> getItens() {
         return itens;
     }
 
@@ -96,14 +96,5 @@ public class Aluno extends Usuario implements Serializable{
     public void addItem(Item item) {
         itens.add(item);
         matricula.compraComPoints(item.getPoints());
-    }
-
-    public boolean containItem(Item item) {
-        for(int i = 0; i < itens.size(); i++){
-            if(item.getId() == itens.get(i).getId()){
-                return true;
-            }
-        }
-        return false;
     }
 }

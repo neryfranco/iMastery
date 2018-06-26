@@ -106,10 +106,16 @@ public class AlunoBundle {
 
     public static void addItem(Item item){
         aluno.addItem(item);
-        itens.add(item);
+        itens = aluno.getItens();
     }
 
     public static boolean containItem(Item item){
-        return aluno.containItem(item);
+        itens = aluno.getItens();
+        for(int i = 0; i < itens.size(); i++){
+            if(item.getId() == itens.get(i).getId()){
+                return true;
+            }
+        }
+        return false;
     }
 }

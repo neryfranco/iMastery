@@ -71,6 +71,11 @@ public class AddHorarioActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private void createHorarios() throws ParseException {
         SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
         Date data = formatador.parse(clock.getText().toString());
