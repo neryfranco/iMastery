@@ -3,6 +3,7 @@ package com.neryfranco.masterygame;
 import android.os.Bundle;
 
 import com.neryfranco.masterygame.model.Aluno;
+import com.neryfranco.masterygame.model.Aula;
 import com.neryfranco.masterygame.model.Item;
 import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Professor;
@@ -17,12 +18,14 @@ public class ProfessorBundle {
     private static Professor professor;
     private static ArrayList<Item> itens;
     private static ArrayList<Aluno> alunos;
+    private static ArrayList<Aula> aulas;
 
     public static void setDefault(){
         professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco", 10);
         matriculas = new ArrayList<>();
-        itens = adicionarItens();
         alunos = new ArrayList<>();
+        adicionarItens();
+        adicionarAulas();
     }
 
     public static Bundle getBundle(){
@@ -47,6 +50,25 @@ public class ProfessorBundle {
 
     public static void setItens(ArrayList<Item> itens) {
         ProfessorBundle.itens = itens;
+    }
+
+    private static void adicionarItens() {
+        itens = new ArrayList<Item>();
+        Item e = new Item("10% de Desconto", "Desconto de 10% na próxima mensalidade.",500.0, null, 10);
+        itens.add(e);
+
+        e = new Item("Exercícios Técnicos", "Pacote com 5 exercícios técnicos abordando " +
+                "os assuntos de sua escolha",300.0, 40.0, 30);
+        itens.add(e);
+
+        e = new Item("Tutorial Musical - Harmonia", "Uma vídeo aula explicando a harmonia" +
+                " de uma música de seu interesse.",800.0, 50.0, 30);
+        itens.add(e);
+
+        e = new Item("Tutorial Musical - Técnica", "Uma vídeo aula ensinando as técnicas" +
+                "contidas em uma música de seu interesse.",900.0, 60.0, 30);
+        itens.add(e);
+
     }
 
     public static ArrayList<Matricula> getMatriculas() {
@@ -79,24 +101,32 @@ public class ProfessorBundle {
         }
     }
 
-    private static ArrayList<Item> adicionarItens() {
-        ArrayList<Item> items = new ArrayList<Item>();
-        Item e = new Item("10% de Desconto", "Desconto de 10% na próxima mensalidade.",500.0, null, 10);
-        items.add(e);
+    public static ArrayList<Aula> getAulas() {
+        return aulas;
+    }
 
-        e = new Item("Exercícios Técnicos", "Pacote com 5 exercícios técnicos abordando " +
-                "os assuntos de sua escolha",300.0, 40.0, 30);
-        items.add(e);
+    public static void setAulas(ArrayList<Aula> aulas) {
+        ProfessorBundle.aulas = aulas;
+    }
 
-        e = new Item("Tutorial Musical - Harmonia", "Uma vídeo aula explicando a harmonia" +
-                " de uma música de seu interesse.",800.0, 50.0, 30);
-        items.add(e);
+    public static void adicionarAulas(){
+        aulas = new ArrayList<>();
+        ArrayList<Aula> preRequisitos = new ArrayList<>();
 
-        e = new Item("Tutorial Musical - Técnica", "Uma vídeo aula ensinando as técnicas" +
-                "contidas em uma música de seu interesse.",900.0, 60.0, 30);
-        items.add(e);
+        Aula a = new Aula (professor, "Campo Harmônico Maior - Tétrades",
+                "Acordes derivados da escala maior encontrados a partir de 3 sobreposições de terças",
+                null);
+        aulas.add(a);
+        preRequisitos.add(a);
 
-        return items;
-
+        aulas.add(new Aula (professor, "Harmonia Funcional",
+                "Este tema aborda as funções dos acordes, conceito importante e muito presente na música popular.",
+                preRequisitos));
+        aulas.add(new Aula (professor, "Harmonia Modal",
+                "Conceitos harmônicos deridados dos Modos Gregos (Centro Modal, Empréstimos, etc)",
+                preRequisitos));
+        aulas.add(new Aula (professor, "Escala Pentatônica",
+                "A primeira e talvez mais importante escala para quem quer começar a improvisar.",
+                null));
     }
 }

@@ -19,6 +19,7 @@ public class Professor extends Usuario implements Serializable{
     private Double exp;
     private ArrayList<Item> itens;
     private ArrayList<Aluno> alunos;
+    private ArrayList<Aula> aulas;
 
     public Professor(String email, String senha, String nome_completo, String nick, Integer num_max_alunos) {
         super(email, senha, nome_completo, nick);
@@ -28,6 +29,7 @@ public class Professor extends Usuario implements Serializable{
         this.exp = 0.0;
         this.itens = new ArrayList<>();
         this.alunos = new ArrayList<>();
+        this.aulas = new ArrayList<>();
     }
 
     public Integer getId() {

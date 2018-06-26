@@ -17,6 +17,7 @@ import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.ProfessorBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.fragments.ProfessorAlunosFragment;
+import com.neryfranco.masterygame.fragments.ProfessorAulasFragment;
 import com.neryfranco.masterygame.fragments.ProfessorItensFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
@@ -31,6 +32,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
     private ProfessorItensFragment professorItensFragment;
     private ProfessorAlunosFragment professorAlunosFragment;
+    private ProfessorAulasFragment professorAulasFragment;
 
     private TextView value_num_alunos_atual;
     private TextView value_num_alunos_total;
@@ -55,6 +57,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
         professorItensFragment = new ProfessorItensFragment();
         professorAlunosFragment = new ProfessorAlunosFragment();
+        professorAulasFragment = new ProfessorAulasFragment();
 
         value_num_alunos_total = findViewById(R.id.value_num_alunos_total);
         value_num_alunos_atual = findViewById(R.id.value_num_alunos_atual);
@@ -79,6 +82,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                         setFragment(professorItensFragment);
                         return true;
                     case R.id.nav_aulas:
+                        setFragment(professorAulasFragment);
                         return true;
                 }
                 return false;
