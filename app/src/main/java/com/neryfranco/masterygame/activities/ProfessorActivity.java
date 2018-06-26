@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.ProfessorBundle;
 import com.neryfranco.masterygame.R;
+import com.neryfranco.masterygame.fragments.ProfessorAlunosFragment;
 import com.neryfranco.masterygame.fragments.ProfessorItensFragment;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
@@ -29,6 +30,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     private ActionBarDrawerToggle sidebarBtn;
 
     private ProfessorItensFragment professorItensFragment;
+    private ProfessorAlunosFragment professorAlunosFragment;
 
     private TextView value_num_alunos_atual;
     private TextView value_num_alunos_total;
@@ -54,6 +56,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         professorItensFragment = new ProfessorItensFragment();
+        professorAlunosFragment = new ProfessorAlunosFragment();
 
         value_num_alunos_total = findViewById(R.id.value_num_alunos_total);
         value_num_alunos_atual = findViewById(R.id.value_num_alunos_atual);
@@ -64,6 +67,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
         setProfessorData();
         verificarMatricula();
+        setFragment(professorAlunosFragment);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -71,6 +75,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
                 switch (item.getItemId()) {
                     case R.id.nav_alunos:
+                        setFragment(professorAlunosFragment);
                         return true;
                     case R.id.nav_itens:
                         setFragment(professorItensFragment);
@@ -107,7 +112,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     }
 
     private void setProfessorData() {
-        Professor professor = AlunoBundle.getProfessor();
+        Professor professor = ProfessorBundle.getProfessor();
         Integer num_alunos_atuais = professor.getNum_alunos_atuais();
         Integer num_alunos_total = professor.getNum_alunos_total();
         Double exp = professor.getExp();
@@ -147,7 +152,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
     }
 
     private void solicitarMatricula(){
-        final Professor professor = AlunoBundle.getProfessor();
+        final Professor professor = ProfessorBundle.getProfessor();
         final Matricula matricula = AlunoBundle.getMatricula();
         final Aluno aluno = AlunoBundle.getAluno();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -160,6 +165,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     AlunoBundle.removeMatricula();
+                    ProfessorBundle.removeAluno(aluno);
                     verificarMatricula();
                     setProfessorData();
                 }
@@ -179,6 +185,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     AlunoBundle.newMatricula(new Matricula(professor, professor.getNum_alunos_atuais(), aluno));
+                    ProfessorBundle.addAluno(aluno);
                     verificarMatricula();
                     setProfessorData();
                 }
@@ -203,7 +210,7 @@ public class ProfessorActivity extends SidebarAlunoActivity {
 
     private void verificarMatricula(){
         Aluno aluno = AlunoBundle.getAluno();
-        Professor professor = AlunoBundle.getProfessor();
+        Professor professor = ProfessorBundle.getProfessor();
         if(aluno.getMatricula() != null && aluno.getMatricula().getProfessor().equals(professor)) {
             solicitarMatriculaBtn.setText(R.string.desmatricular);
         }

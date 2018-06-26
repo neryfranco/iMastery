@@ -26,6 +26,7 @@ public class Aluno extends Usuario implements Serializable{
         matricula = null;
         horarios = new ArrayList<>();
         tarefasConcluidas = new ArrayList<>();
+        itens = new ArrayList<>();
     }
 
     public Integer getLevel() {
@@ -90,5 +91,19 @@ public class Aluno extends Usuario implements Serializable{
 
     public void addTarefaConcluida(Tarefa tarefa){
         tarefasConcluidas.add(tarefa);
+    }
+
+    public void addItem(Item item) {
+        itens.add(item);
+        matricula.compraComPoints(item.getPoints());
+    }
+
+    public boolean containItem(Item item) {
+        for(int i = 0; i < itens.size(); i++){
+            if(item.getId() == itens.get(i).getId()){
+                return true;
+            }
+        }
+        return false;
     }
 }

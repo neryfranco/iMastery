@@ -1,4 +1,5 @@
 package com.neryfranco.masterygame;
+import android.content.Intent;
 import android.os.Bundle;
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Item;
@@ -12,13 +13,12 @@ public class AlunoBundle {
     private static Bundle bundle;
     private static Matricula matricula;
     private static Aluno aluno;
-    private static Professor professor;
     private static ArrayList<Tarefa> tarefas;
     private static ArrayList<Item> itens;
     private static boolean matriculado;
 
     public static void newAccount(){
-        professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco", 10);
+
         matricula = null;
         matriculado = false;
         tarefas = new ArrayList<>();
@@ -49,14 +49,12 @@ public class AlunoBundle {
     public static void newMatricula(Matricula m) {
         matricula = m;
         aluno.setMatricula(matricula);
-        professor.addAluno(aluno);
         matriculado = true;
     }
 
     public static void removeMatricula(){
         matricula = null;
         aluno.setMatricula(null);
-        professor.removeAluno(aluno);
         matriculado = false;
     }
 
@@ -66,14 +64,6 @@ public class AlunoBundle {
 
     public static void setAluno(Aluno aluno) {
         AlunoBundle.aluno = aluno;
-    }
-
-    public static Professor getProfessor() {
-        return professor;
-    }
-
-    public static void setProfessor(Professor professor) {
-        AlunoBundle.professor = professor;
     }
 
     public static void setMatriculado(boolean matriculado) {
@@ -112,5 +102,14 @@ public class AlunoBundle {
 
     public static void setItens(ArrayList<Item> itens) {
         AlunoBundle.itens = itens;
+    }
+
+    public static void addItem(Item item){
+        aluno.addItem(item);
+        itens.add(item);
+    }
+
+    public static boolean containItem(Item item){
+        return aluno.containItem(item);
     }
 }

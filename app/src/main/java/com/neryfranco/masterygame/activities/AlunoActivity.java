@@ -108,7 +108,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     @Override
     protected void onRestart() {
         super.onRestart();
-        setFragment(tarefasFragment);
         SidebarAlunoActivity.setItemSelected(0);
     }
 

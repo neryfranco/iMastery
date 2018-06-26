@@ -1,5 +1,8 @@
 package com.neryfranco.masterygame.model;
 
+import android.content.Intent;
+import android.graphics.Point;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,7 @@ public class Matricula implements Serializable{
     private Double exp;
     private Double points;
     private ArrayList<Tarefa> tarefas;
+    private ArrayList<Item> itens;
 
     public Matricula(Professor professor, Integer id, Aluno aluno) {
         this.professor = professor;
@@ -28,6 +32,7 @@ public class Matricula implements Serializable{
         exp = 0.0;
         points = 0.0;
         tarefas = new ArrayList<>();
+        itens = new ArrayList<>();
     }
 
     public Professor getProfessor() {
@@ -110,5 +115,9 @@ public class Matricula implements Serializable{
     public void removeTarefa(Tarefa tarefa){
         tarefas.remove(tarefa);
         aluno.addTarefaConcluida(tarefa);
+    }
+
+    public void compraComPoints(Double points) {
+        this.points -= points;
     }
 }

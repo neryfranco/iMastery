@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.neryfranco.masterygame.AlunoBundle;
+import com.neryfranco.masterygame.ProfessorBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.model.Aluno;
 
@@ -80,6 +81,7 @@ public class CriarContaActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
         AlunoBundle.setAluno(aluno);
         AlunoBundle.newAccount();
+        ProfessorBundle.setDefault();
         startActivity(intent);
     }
 }

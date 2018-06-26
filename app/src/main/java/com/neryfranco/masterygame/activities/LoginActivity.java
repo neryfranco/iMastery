@@ -34,7 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.neryfranco.masterygame.AlunoBundle;
+import com.neryfranco.masterygame.ProfessorBundle;
 import com.neryfranco.masterygame.R;
+import com.neryfranco.masterygame.model.Professor;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -365,6 +367,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void startAluno(){
         AlunoBundle.setDefault();
+        ProfessorBundle.setDefault();
         Intent intent = new Intent(getApplicationContext(), AlunoActivity.class);
         startActivity(intent);
     }

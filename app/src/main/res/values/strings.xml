@@ -50,7 +50,7 @@
     <string name="hora_value">Horário:</string>
     <string name="title_activity_login">iMastery</string>
     <string name="title_matricula_inexistente">Você não está matriculado</string>
-    <string name="description_matricula_inexistente">Sem matrícula você não usufruirá de todos os recursos deste aplicativo. Deseja fazer sua matrícula?</string>
+    <string name="description_matricula_inexistente">Sem matrícula você não terá acesso a todos os recursos deste professor.</string>
     <string name="title_matricula_efetivada">Matrícula Efetivada</string>
     <string name="description_matricula_efetivada">Sua matrícula foi realizada com sucesso!</string>
     <string name="title_matricula_indisponivel">Matrícula indisponível</string>
@@ -103,5 +103,12 @@
     <string name="descricao">Descrição:</string>
     <string name="associar_aula_label">Associar Aula:</string>
     <string name="criar_tarefa">Criar Tarefa</string>
+    <string name="comprar_item">Comprar Item</string>
+
+    <string name="points_insuficiente_title">Points Insuficientes</string>
+    <string name="points_insuficiente_description">Você não possui points suficientes para comprar este item</string>
+    <string name="item_adquirido_title">Compra efetuada</string>
+    <string name="item_adquirido_description">A compra foi realizada com sucesso</string>
+
 
 </resources>
