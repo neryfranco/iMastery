@@ -22,8 +22,8 @@
     <string name="exp_label">Exp:</string>
     <string name="task_points_value">points_value</string>
     <string name="task_exp_value">exp_value</string>
-    <string name="task_aula_label">Aula Associada:</string>
-    <string name="task_aula_value">Nenhuma aula associada.</string>
+    <string name="aula_associada_label">Aula Associada:</string>
+    <string name="aula_null_value">Nenhuma aula associada.</string>
     <string name="info_title">Informações:</string>
     <string name="task_teacher_label">Professor:</string>
     <string name="task_teacher_value">Nome do Professor</string>
@@ -101,7 +101,6 @@
     <string name="titulo">Título:</string>
     <string name="aluno">Aluno:</string>
     <string name="descricao">Descrição:</string>
-    <string name="associar_aula_label">Associar Aula:</string>
     <string name="criar_tarefa">Criar Tarefa</string>
     <string name="comprar_item">Comprar Item</string>
 
@@ -109,6 +108,11 @@
     <string name="points_insuficiente_description">Você não possui points suficientes para comprar este item</string>
     <string name="item_adquirido_title">Compra efetuada</string>
     <string name="item_adquirido_description">A compra foi realizada com sucesso</string>
+
+    <string name="pre_requisito">Pré-Requisito</string>
+    <string name="adquirir_tarefas">Adquirir Tarefas</string>
+    <string name="tarefasList">Lista de Tarefas</string>
+    <string name="nao_possui">Não Possui</string>
 
 
 </resources>

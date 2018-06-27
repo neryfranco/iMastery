@@ -111,20 +111,24 @@ public class ProfessorBundle {
 
     public static void adicionarAulas(){
         aulas = new ArrayList<>();
-        ArrayList<Aula> preRequisitos = new ArrayList<>();
 
         Aula a = new Aula (professor, "Campo Harmônico Maior - Tétrades",
                 "Acordes derivados da escala maior encontrados a partir de 3 sobreposições de terças",
                 null);
         aulas.add(a);
-        preRequisitos.add(a);
 
-        aulas.add(new Aula (professor, "Harmonia Funcional",
+        Aula a2 = new Aula (professor, "Harmonia Funcional",
                 "Este tema aborda as funções dos acordes, conceito importante e muito presente na música popular.",
-                preRequisitos));
-        aulas.add(new Aula (professor, "Harmonia Modal",
+                null);
+        a2.addPreRequisito(a);
+        aulas.add(a2);
+
+        a2 = new Aula (professor, "Harmonia Modal",
                 "Conceitos harmônicos deridados dos Modos Gregos (Centro Modal, Empréstimos, etc)",
-                preRequisitos));
+                null);
+        a2.addPreRequisito(a);
+        aulas.add(a2);
+
         aulas.add(new Aula (professor, "Escala Pentatônica",
                 "A primeira e talvez mais importante escala para quem quer começar a improvisar.",
                 null));

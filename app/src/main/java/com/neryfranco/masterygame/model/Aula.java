@@ -15,17 +15,22 @@ public class Aula implements Serializable{
     private Integer id;
     private String titulo;
     private String descricao;
-    private ArrayList<Aula> pre_requisito;
+    private ArrayList<Aula> pre_requisitos;
     private ArrayList<Habilidade> habilidades;
     private ArrayList<Conteudo> conteudos;
+    private ArrayList<Tarefa> tarefas;
     private static final AtomicInteger count = new AtomicInteger(0);
 
-    public Aula(Professor professor, String titulo, String descricao, ArrayList<Aula> pre_requisito) {
+    public Aula(Professor professor, String titulo, String descricao, ArrayList<Aula> pre_requisitos) {
         this.id = count.incrementAndGet();
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.pre_requisito = pre_requisito;
+        this.professor = professor;
+        this.pre_requisitos = new ArrayList<>();
+        this.tarefas = new ArrayList<>();
+        this.habilidades = new ArrayList<>();
+        this.conteudos = new ArrayList<>();
     }
 
     public Professor getProfessor() {
@@ -60,12 +65,16 @@ public class Aula implements Serializable{
         this.descricao = descricao;
     }
 
-    public ArrayList<Aula> getPre_requisito() {
-        return pre_requisito;
+    public ArrayList<Aula> getPre_requisitos() {
+        return pre_requisitos;
     }
 
-    public void setPre_requisito(ArrayList<Aula> pre_requisito) {
-        this.pre_requisito = pre_requisito;
+    public void setPre_requisitos(ArrayList<Aula> pre_requisito) {
+        this.pre_requisitos = pre_requisito;
+    }
+
+    public void addPreRequisito(Aula aula){
+        pre_requisitos.add(aula);
     }
 
     public List<Habilidade> getHabilidades() {
@@ -82,5 +91,17 @@ public class Aula implements Serializable{
 
     public void setConteudos(ArrayList<Conteudo> conteudos) {
         this.conteudos = conteudos;
+    }
+
+    public ArrayList<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(ArrayList<Tarefa> tarefas) {
+        this.tarefas = tarefas;
+    }
+
+    public void addTarefa(Tarefa tarefa){
+        tarefas.add(tarefa);
     }
 }

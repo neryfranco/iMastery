@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.fragments.TarefasFragment;
+import com.neryfranco.masterygame.model.Aula;
 import com.neryfranco.masterygame.model.Tarefa;
 
 public class AddTarefaActivity extends AppCompatActivity {
@@ -21,28 +20,33 @@ public class AddTarefaActivity extends AppCompatActivity {
     private EditText descricao;
     private EditText exp;
     private EditText points;
-    private Spinner aula;
+    private TextView aulaView;
     private Button criarTarefaBtn;
 
     private String sTitulo;
     private String sDescricao;
     private Double dExp;
     private Double dPoints;
+    private Aula aula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarefa_add);
 
+        Bundle bundle = getIntent().getExtras();
+        aula = (Aula) bundle.getSerializable("aula");
+        getIntent().getExtras().remove("aula");
+
         nickname = findViewById(R.id.aluno_nickname);
         titulo = findViewById(R.id.titulo_value);
         descricao = findViewById(R.id.descricao_value);
         exp = findViewById(R.id.exp_value);
         points = findViewById(R.id.pontos_value);
-        aula = findViewById(R.id.aula_value);
+        aulaView = findViewById(R.id.aulaAssociada_value);
         criarTarefaBtn = findViewById(R.id.criarTarefaBtn);
-
         nickname.setText(AlunoBundle.getAluno().getNick());
+        if(aula != null) aulaView.setText(aula.getTitulo());
 
         criarTarefaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +71,7 @@ public class AddTarefaActivity extends AppCompatActivity {
             dExp = Double.parseDouble(exp.getText().toString());
             dPoints = Double.parseDouble(points.getText().toString());
 
-            Tarefa tarefa = new Tarefa(sTitulo, sDescricao, dExp, dPoints, null, AlunoBundle.getMatricula());
+            Tarefa tarefa = new Tarefa(sTitulo, sDescricao, dExp, dPoints, aula, AlunoBundle.getMatricula());
             AlunoBundle.addTarefa(tarefa);
             return true;
         }

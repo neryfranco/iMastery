@@ -32,7 +32,7 @@ public class Aulas_Adapter extends ArrayAdapter<Aula> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.element_aula, parent, false);
-        TextView titulo = (TextView) rowView.findViewById(R.id.aula_title);
+        TextView titulo = (TextView) rowView.findViewById(R.id.tarefa_title);
         TextView descricao = (TextView) rowView.findViewById(R.id.aula_description);
         titulo.setText(elementos.get(position).getTitulo());
         descricao.setText(elementos.get(position).getDescricao());

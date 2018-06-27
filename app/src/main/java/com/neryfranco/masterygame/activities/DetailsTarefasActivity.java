@@ -7,18 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
-import com.neryfranco.masterygame.model.Matricula;
 import com.neryfranco.masterygame.model.Tarefa;
-
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
-import java.nio.DoubleBuffer;
-import java.util.List;
 
 public class DetailsTarefasActivity extends AppCompatActivity{
 
