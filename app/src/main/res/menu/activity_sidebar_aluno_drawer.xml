@@ -15,12 +15,13 @@
         <item
             android:id="@+id/aulas_menu"
             android:icon="@drawable/video_white"
-            android:title="@string/aulas" />
+            android:title="@string/aulas"
+            android:enabled="false"/>
         <item
             android:id="@+id/config_menu"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/config" />
-
+            android:title="@string/config"
+            android:enabled="false"/>
         <item
             android:id="@+id/logout"
             android:icon="@drawable/power"

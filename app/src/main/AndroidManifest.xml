@@ -30,14 +30,19 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activities.DetailsTarefasActivity">
+        <activity android:name=".activities.DetailsTarefasActivity"
+            android:theme="@style/ProfessorTheme"
+            android:label="@string/tarefa">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.DetailsItensActivity" />
+        <activity
+            android:name=".activities.DetailsItensActivity"
+            android:label="@string/item"
+            android:theme="@style/ProfessorTheme"/>
         <activity android:name=".activities.AddHorarioActivity" />
         <activity
             android:name=".activities.LoginActivity"
@@ -52,16 +57,24 @@
             android:name=".activities.SidebarAlunoActivity"
             android:label="@string/title_activity_sidebar_aluno"
             android:theme="@style/AlunoTheme.NoActionBar" />
-        <activity android:name=".activities.CriarContaActivity" />
+        <activity
+            android:name=".activities.CriarContaActivity"
+            android:label="@string/createAccount"/>
         <activity
             android:name=".activities.ProfessorActivity"
             android:label="@string/professor"
             android:theme="@style/ProfessorTheme" />
-        <activity android:name=".activities.AddTarefaActivity" />
+
+        <activity
+            android:name=".activities.AddTarefaActivity"
+            android:label="@string/nova_tarefa"
+            android:theme="@style/ProfessorTheme"/>
+
         <activity
             android:name=".activities.DetailsAulasActivity"
-            android:label="@string/professor"
-            android:theme="@style/ProfessorTheme"></activity>
+            android:label="@string/aulas"
+            android:theme="@style/ProfessorTheme">
+        </activity>
     </application>
 
 </manifest>

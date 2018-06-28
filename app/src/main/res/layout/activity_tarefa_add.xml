@@ -8,21 +8,6 @@
 
 
     <TextView
-        android:id="@+id/novaTarefa_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/nova_tarefa"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/titulo_tarefa_label"
         android:layout_width="41dp"
         android:layout_height="19dp"
@@ -60,7 +45,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/aluno"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/novaTarefa_label" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/aluno_nickname"
@@ -110,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:text="@string/exp_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descricao_value" />
