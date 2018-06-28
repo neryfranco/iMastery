@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.ProfessorBundle;
@@ -146,7 +147,8 @@ public class ProfessorActivity extends SidebarAlunoActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     AlunoBundle.removeMatricula();
-                    ProfessorBundle.removeAluno(aluno);
+                    if(ProfessorBundle.removeAluno(aluno))
+                        Toast.makeText(getApplicationContext(), "Removeu", Toast.LENGTH_SHORT).show();
                     verificarMatricula();
                     setProfessorData();
                 }

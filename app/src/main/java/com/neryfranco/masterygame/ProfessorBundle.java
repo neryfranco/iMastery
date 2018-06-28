@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class ProfessorBundle {
 
     private static Bundle bundle;
-    private static ArrayList<Matricula> matriculas;
     private static Professor professor;
     private static ArrayList<Item> itens;
     private static ArrayList<Aluno> alunos;
@@ -24,7 +23,6 @@ public class ProfessorBundle {
 
     public static void setDefault(){
         professor = new Professor("contato@neryfranco.com","321","Mateus Nery Franco", "neryfranco", 10);
-        matriculas = new ArrayList<>();
         alunos = new ArrayList<>();
         adicionarItens();
         adicionarAulas();
@@ -73,35 +71,30 @@ public class ProfessorBundle {
 
     }
 
-    public static ArrayList<Matricula> getMatriculas() {
-        return matriculas;
-    }
-
-    public static void setMatriculas(ArrayList<Matricula> matriculas) {
-        ProfessorBundle.matriculas = matriculas;
-    }
-
     public static ArrayList<Aluno> getAlunos() {
+        alunos = professor.getAlunos();
         return alunos;
     }
 
     public static void setAlunos(ArrayList<Aluno> alunos) {
         ProfessorBundle.alunos = alunos;
+        alunos = professor.getAlunos();
     }
 
     public static void addAluno(Aluno aluno){
-        alunos.add(aluno);
         professor.addAluno(aluno);
     }
 
-    public static void removeAluno(Aluno aluno){
+    public static boolean removeAluno(Aluno aluno){
         for(int i = 0; i < alunos.size(); i++){
             if(aluno.getEmail() == alunos.get(i).getEmail()){
                 alunos.remove(i);
-                professor.removeAluno();
+                professor.removeAluno(i);
                 professor.setAlunos(alunos);
+                return true;
             }
         }
+        return false;
     }
 
     public static ArrayList<Aula> getAulas() {

@@ -40,7 +40,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
     private TextView value_points;
     private TextView value_exp;
     private TextView value_nickname;
-    private TextView lista_vazia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +64,6 @@ public class AlunoActivity extends SidebarAlunoActivity{
         value_points = (TextView) findViewById(R.id.value_points);
         value_exp = (TextView) findViewById(R.id.value_exp);
         value_nickname = (TextView) findViewById(R.id.text_nickname);
-        lista_vazia = findViewById(R.id.text_listaVazia);
 
         tarefasFragment = new TarefasFragment();
         itensFragment = new ItensFragment();
@@ -81,19 +79,13 @@ public class AlunoActivity extends SidebarAlunoActivity{
                 switch (item.getItemId()) {
                     case R.id.nav_tarefas:
                         setFragment(tarefasFragment);
-                        if(!AlunoBundle.getTarefas().isEmpty()) lista_vazia.setVisibility(View.INVISIBLE);
-                        else lista_vazia.setVisibility(View.VISIBLE);
                         return true;
 
                     case R.id.nav_itens:
-                        if(!AlunoBundle.getItens().isEmpty()) lista_vazia.setVisibility(View.INVISIBLE);
-                        else lista_vazia.setVisibility(View.VISIBLE);
                         setFragment(itensFragment);
                         return true;
-                        
+
                     case R.id.nav_horarios:
-                        if(!AlunoBundle.getAluno().getHorarios().isEmpty()) lista_vazia.setVisibility(View.INVISIBLE);
-                        else lista_vazia.setVisibility(View.VISIBLE);
                         setFragment(horarioFragment);
                         return true;
                 }
