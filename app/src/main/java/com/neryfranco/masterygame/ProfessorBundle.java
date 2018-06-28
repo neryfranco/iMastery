@@ -1,6 +1,8 @@
 package com.neryfranco.masterygame;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Aula;
@@ -96,6 +98,7 @@ public class ProfessorBundle {
         for(int i = 0; i < alunos.size(); i++){
             if(aluno.getEmail() == alunos.get(i).getEmail()){
                 alunos.remove(i);
+                professor.removeAluno();
                 professor.setAlunos(alunos);
             }
         }

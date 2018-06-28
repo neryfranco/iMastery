@@ -94,8 +94,7 @@ public class Professor extends Usuario implements Serializable{
         this.num_alunos_total++;
     }
 
-    public void removeAluno(Aluno aluno){
-        alunos.remove(aluno);
+    public void removeAluno(){
         this.num_alunos_atuais--;
     }
 

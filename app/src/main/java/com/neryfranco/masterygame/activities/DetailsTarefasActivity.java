@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
+import com.neryfranco.masterygame.model.Aluno;
 import com.neryfranco.masterygame.model.Tarefa;
 
 public class DetailsTarefasActivity extends AppCompatActivity{
@@ -23,6 +25,7 @@ public class DetailsTarefasActivity extends AppCompatActivity{
     private RatingBar ratingBar;
     private Button enviarTarefaBtn;
     private Tarefa tarefa;
+    private Aluno aluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +33,9 @@ public class DetailsTarefasActivity extends AppCompatActivity{
         setContentView(R.layout.activity_tarefa_details);
 
         Bundle bundle = getIntent().getExtras();
-        tarefa = (Tarefa) bundle.getSerializable("tarefa");
-        getIntent().getExtras().remove("lista");
+        if (bundle != null) {
+            tarefa = (Tarefa) bundle.getSerializable("tarefa");
+        }
 
         title = (TextView) findViewById(R.id.tarefa_title);
         description = (TextView) findViewById(R.id.tarefa_description);
@@ -43,6 +47,7 @@ public class DetailsTarefasActivity extends AppCompatActivity{
         enviarTarefaBtn = (Button) findViewById(R.id.concluirTarefaBtn);
         setInfo();
 
+        if(tarefa.getAluno() == null) enviarTarefaBtn.setVisibility(View.INVISIBLE);
         enviarTarefaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +72,8 @@ public class DetailsTarefasActivity extends AppCompatActivity{
         points.setText(p.toString());
         exp.setText(e.toString());
         ratingBar.setNumStars(tarefa.getReputacao());
-        professor.setText(tarefa.getMatricula().getProfessor().getNick());
+        professor.setText(tarefa.getProfessor().getNick());
+        if(tarefa.getAula() != null) aula.setText(tarefa.getAula().getTitulo());
     }
 
     private void finalizarTarefa(){

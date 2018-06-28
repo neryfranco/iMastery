@@ -14,9 +14,11 @@ import com.neryfranco.masterygame.AlunoBundle;
 import com.neryfranco.masterygame.R;
 import com.neryfranco.masterygame.activities.AddTarefaActivity;
 import com.neryfranco.masterygame.adapter.Tarefas_Adapter;
+import com.neryfranco.masterygame.model.Aluno;
+import com.neryfranco.masterygame.model.Aula;
 import com.neryfranco.masterygame.model.Tarefa;
 
-import java.util.ArrayList;
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -25,8 +27,10 @@ import java.util.ArrayList;
 public class TarefasFragment extends Fragment{
 
     private ListView lista;
-    private ArrayList<Tarefa> tarefas;
     private FloatingActionButton addTarefaBtn;
+    private Aula aula;
+    private Aluno aluno;
+    private Integer REQUEST = 1;
 
     public TarefasFragment() {
     }
@@ -43,11 +47,17 @@ public class TarefasFragment extends Fragment{
         lista.setAdapter(adapter);
         verificaMatricula();
 
+        Bundle bundle = this.getArguments();
+        if(bundle != null) aluno = (Aluno) bundle.getSerializable("aluno");
+
         addTarefaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                if(aluno != null) bundle.putSerializable("aluno", aluno);
                 Intent intent = new Intent(getContext(), AddTarefaActivity.class);
-                startActivity(intent);
+                intent.putExtras(bundle);
+                startActivityForResult(intent,REQUEST);
             }
         });
 
@@ -57,6 +67,18 @@ public class TarefasFragment extends Fragment{
     private void verificaMatricula(){
         if(AlunoBundle.getAluno().getMatricula() == null) addTarefaBtn.setVisibility(View.INVISIBLE);
         else addTarefaBtn.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == REQUEST) {
+            if(resultCode == RESULT_OK){
+                Bundle bundle = data.getExtras();
+                Tarefa tarefa = (Tarefa) bundle.getSerializable("tarefa");
+                AlunoBundle.adquirirTarefas(tarefa);
+            }
+        }
     }
 
 }

@@ -12,17 +12,18 @@ public class Tarefa implements Serializable{
     private Double exp;
     private Double points;
     private Aula aula;
-    private Matricula matricula;
+    private Professor professor;
+    private Aluno aluno;
     private static final AtomicInteger count = new AtomicInteger(0);
 
-    public Tarefa(String titulo, String descricao, Double exp, Double points, Aula aula, Matricula matricula) {
+    public Tarefa(String titulo, String descricao, Double exp, Double points, Aula aula, Professor professor) {
         this.id = count.incrementAndGet();
         this.titulo = titulo;
         this.descricao = descricao;
         this.exp = exp;
         this.points = points;
         this.aula = aula;
-        this.matricula = matricula;
+        this.professor = professor;
         this.reputacao = 0;
     }
 
@@ -80,11 +81,19 @@ public class Tarefa implements Serializable{
         this.aula = aula;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setMatricula(Matricula matricula) {
-        this.matricula = matricula;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }

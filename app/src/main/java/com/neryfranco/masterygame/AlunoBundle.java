@@ -82,9 +82,22 @@ public class AlunoBundle {
         AlunoBundle.tarefas = tarefas;
     }
 
-    public static void addTarefa(Tarefa tarefa){
-        tarefas.add(tarefa);
-        matricula.setTarefas(tarefas);
+    public static boolean adquirirTarefas(Tarefa tarefa){
+        if(tarefas.add(tarefa)){
+            matricula.setTarefas(tarefas);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean adquirirTarefas(ArrayList<Tarefa> listTarefas){
+        for(int i=0; i<listTarefas.size(); i++)
+            listTarefas.get(i).setAluno(aluno);
+        if(tarefas.addAll(listTarefas)) {
+            matricula.setTarefas(tarefas);
+            return true;
+        }
+        return false;
     }
 
     public static void removeTarefa(Tarefa tarefa){
